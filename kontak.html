@@ -3,180 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeri Desa Seburing Hilir</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Kontak - Desa Seburing Hilir</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #1b5e20;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #2e7d32;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #2e7d32;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #1b5e20;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-    <nav class="navbar">
+    <header>
+        <h1>Website Resmi Desa Seburing Hilir</h1>
+        <p>Layanan dan Informasi Informasi Publik Desa</p>
+    </header>
 
-        <a href="index.html" class="logo">
-            🌿 Seburing Hilir
-        </a>
-
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
-        <ul class="nav-menu" id="navMenu">
-            <li><a href="index.html">Beranda</a></li>
-            <li><a href="profil.html">Profil</a></li>
-            <li><a href="sejarah.html">Sejarah</a></li>
-            <li><a href="potensi.html">Potensi</a></li>
-            <li><a href="galeri.html" class="active">Galeri</a></li>
-            <li><a href="kontak.html">Kontak</a></li>
-        </ul>
-
+    <nav>
+        <a href="index.html">Beranda</a>
+        <a href="profil.html">Profil Desa</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="kontak.html">Kontak</a>
     </nav>
-</header>
 
+    <div class="container">
+        <h2>Hubungi Kami</h2>
+        <p>Silakan tinggalkan pesan atau pertanyaan Anda kepada Pemerintah Desa Seburing Hilir melalui formulir di bawah ini.</p>
 
-<section class="page-header">
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="nama">Nama Lengkap:</label>
+                <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda..." required>
+            </div>
 
-    <h1>Galeri Desa</h1>
+            <div class="form-group">
+                <label for="email">Email / Nomor HP:</label>
+                <input type="text" id="email" name="email" placeholder="Contoh: 08123456789 atau nama@email.com" required>
+            </div>
 
-    <p>
-        Dokumentasi Desa Seburing Hilir
-    </p>
+            <div class="form-group">
+                <label for="pesan">Pesan / Pertanyaan:</label>
+                <textarea id="pesan" name="pesan" rows="5" placeholder="Tuliskan pesan Anda di sini..." required></textarea>
+            </div>
 
-</section>
+            <button type="submit">Kirim Pesan</button>
+        </form>
 
+        <hr style="margin: 30px 0;">
 
-<section class="section">
-
-    <div class="section-title">
-
-        <p>DOKUMENTASI</p>
-
-        <h2>Keindahan dan Kehidupan Desa</h2>
-
+        <h3>Informasi Kantor Desa</h3>
+        <p><strong>Alamat Kantor Desa:</strong> Jalan Desa Seburing Hilir</p>
+        <p><strong>Jam Operasional:</strong> Senin - Jumat (08.00 - 15.00 WIB)</p>
     </div>
 
-
-    <div class="gallery">
-
-
-        <div class="gallery-item">
-
-            <img src="desa.jpeg" alt="Desa Seburing Hilir">
-
-            <div class="gallery-caption">
-                <h3>Desa Seburing Hilir</h3>
-                <p>Suasana desa</p>
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <img src="kantor-desa.jpeg" alt="Kantor Desa">
-
-            <div class="gallery-caption">
-                <h3>Kantor Desa</h3>
-                <p>Pusat pelayanan masyarakat</p>
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <img src="koperasi-merah-putih.jpeg"
-                 alt="Koperasi Merah Putih">
-
-            <div class="gallery-caption">
-                <h3>Koperasi Merah Putih</h3>
-                <p>Kegiatan ekonomi masyarakat</p>
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <img src="sekolahan.jpeg"
-                 alt="Sekolahan">
-
-            <div class="gallery-caption">
-                <h3>Sekolahan</h3>
-                <p>Fasilitas pendidikan</p>
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <img src="jembatan-gantung.jpeg"
-                 alt="Jembatan Gantung">
-
-            <div class="gallery-caption">
-                <h3>Jembatan Gantung</h3>
-                <p>Infrastruktur desa</p>
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <img src="jalan-desa.jpeg"
-                 alt="Jalan Desa">
-
-            <div class="gallery-caption">
-                <h3>Jalan Desa</h3>
-                <p>Akses masyarakat</p>
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <img src="sungai.jpeg"
-                 alt="Sungai Desa">
-
-            <div class="gallery-caption">
-                <h3>Sungai Desa</h3>
-                <p>Lingkungan alam</p>
-            </div>
-
-        </div>
-
-
-        <div class="gallery-item">
-
-            <img src="kegiatan.jpeg"
-                 alt="Kegiatan Desa">
-
-            <div class="gallery-caption">
-                <h3>Kegiatan Desa</h3>
-                <p>Aktivitas masyarakat</p>
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<footer>
-
-    <div class="footer-content">
-        <h2>🌿 Desa Seburing Hilir</h2>
-        <p>Website informasi Desa Seburing Hilir.</p>
-    </div>
-
-    <div class="copyright">
-        © 2026 Desa Seburing Hilir
-    </div>
-
-</footer>
-
-<script src="script.js"></script>
+    <footer>
+        <p>&copy; 2026 Pemerintah Desa Seburing Hilir. All Rights Reserved.</p>
+    </footer>
 
 </body>
 </html>
