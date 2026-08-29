@@ -7,7 +7,7 @@ function toggleMenu() {
 }
 
 
-// Menutup menu setelah link diklik
+// Menutup menu ketika menu diklik
 const navLinks = document.querySelectorAll(".nav-menu a");
 
 navLinks.forEach(function(link) {
