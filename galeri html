@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Galeri - Desa Seburing Hilir</title>
-
+    <title>Galeri Desa Seburing Hilir</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -17,7 +13,7 @@
     <nav class="navbar">
 
         <a href="index.html" class="logo">
-            <span>🌿</span> Seburing Hilir
+            🌿 Seburing Hilir
         </a>
 
         <button class="menu-toggle" onclick="toggleMenu()">☰</button>
@@ -62,11 +58,11 @@
 
         <div class="gallery-item">
 
-            <img src="img/desa.jpeg" alt="Desa Seburing Hilir">
+            <img src="desa.jpeg" alt="Desa Seburing Hilir">
 
             <div class="gallery-caption">
                 <h3>Desa Seburing Hilir</h3>
-                <p>Suasana Desa</p>
+                <p>Suasana desa</p>
             </div>
 
         </div>
@@ -74,7 +70,7 @@
 
         <div class="gallery-item">
 
-            <img src="img/kantor-desa.jpeg" alt="Kantor Desa">
+            <img src="kantor-desa.jpeg" alt="Kantor Desa">
 
             <div class="gallery-caption">
                 <h3>Kantor Desa</h3>
@@ -86,7 +82,7 @@
 
         <div class="gallery-item">
 
-            <img src="img/koperasi-merah-putih.jpeg"
+            <img src="koperasi-merah-putih.jpeg"
                  alt="Koperasi Merah Putih">
 
             <div class="gallery-caption">
@@ -99,7 +95,7 @@
 
         <div class="gallery-item">
 
-            <img src="img/sekolahan.jpeg"
+            <img src="sekolahan.jpeg"
                  alt="Sekolahan">
 
             <div class="gallery-caption">
@@ -112,7 +108,7 @@
 
         <div class="gallery-item">
 
-            <img src="img/jembatan-gantung.jpeg"
+            <img src="jembatan-gantung.jpeg"
                  alt="Jembatan Gantung">
 
             <div class="gallery-caption">
@@ -125,7 +121,7 @@
 
         <div class="gallery-item">
 
-            <img src="img/jalan-desa.jpeg"
+            <img src="jalan-desa.jpeg"
                  alt="Jalan Desa">
 
             <div class="gallery-caption">
@@ -138,7 +134,7 @@
 
         <div class="gallery-item">
 
-            <img src="img/sungai.jpeg"
+            <img src="sungai.jpeg"
                  alt="Sungai Desa">
 
             <div class="gallery-caption">
@@ -151,7 +147,7 @@
 
         <div class="gallery-item">
 
-            <img src="img/kegiatan.jpeg"
+            <img src="kegiatan.jpeg"
                  alt="Kegiatan Desa">
 
             <div class="gallery-caption">
@@ -170,11 +166,8 @@
 <footer>
 
     <div class="footer-content">
-
         <h2>🌿 Desa Seburing Hilir</h2>
-
         <p>Website informasi Desa Seburing Hilir.</p>
-
     </div>
 
     <div class="copyright">
