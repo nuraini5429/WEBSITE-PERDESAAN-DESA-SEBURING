@@ -535,6 +535,16 @@ header {
     object-fit: cover;
 }
 
+/* =========================
+   GAMBAR SEKOLAH
+   Ukuran gambar sekolah diperkecil
+========================= */
+
+.potential-card:nth-child(2) img {
+    height: 220px;
+    object-fit: cover;
+}
+
 .potential-content {
     padding: 25px;
 }
