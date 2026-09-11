@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Kontak - Desa Seburing Hilir</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,26 +14,31 @@
             background-color: #f4f4f4;
             color: #333;
         }
+
         header {
             background-color: #1b5e20;
             color: white;
             padding: 20px;
             text-align: center;
         }
+
         nav {
             background-color: #2e7d32;
             padding: 10px;
             text-align: center;
         }
+
         nav a {
             color: white;
             margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
         }
+
         nav a:hover {
             text-decoration: underline;
         }
+
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -40,21 +47,32 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
+
         .form-group {
             margin-bottom: 15px;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
         }
-        .form-group input, .form-group textarea {
+
+        .form-group input,
+        .form-group textarea {
             width: 100%;
             padding: 10px;
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
         }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
         button {
             background-color: #2e7d32;
             color: white;
@@ -64,9 +82,21 @@
             cursor: pointer;
             font-size: 16px;
         }
+
         button:hover {
             background-color: #1b5e20;
         }
+
+        button:disabled {
+            background-color: #999;
+            cursor: not-allowed;
+        }
+
+        #status {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
         footer {
             text-align: center;
             padding: 15px;
@@ -76,13 +106,17 @@
         }
     </style>
 </head>
+
 <body>
 
+    <!-- HEADER -->
     <header>
         <h1>Website Resmi Desa Seburing Hilir</h1>
         <p>Layanan dan Informasi Publik Desa</p>
     </header>
 
+
+    <!-- NAVBAR -->
     <nav>
         <a href="index.html">Beranda</a>
         <a href="profil.html">Profil Desa</a>
@@ -92,39 +126,227 @@
         <a href="kontak.html">Kontak</a>
     </nav>
 
+
+    <!-- KONTEN -->
     <div class="container">
+
         <h2>Hubungi Kami</h2>
-        <p>Silakan tinggalkan pesan atau pertanyaan Anda kepada Pemerintah Desa Seburing Hilir melalui formulir di bawah ini.</p>
 
-        <form action="#" method="post">
+        <p>
+            Silakan tinggalkan pesan atau pertanyaan Anda
+            kepada Pemerintah Desa Seburing Hilir melalui
+            formulir di bawah ini.
+        </p>
+
+
+        <!-- FORM KONTAK -->
+        <form id="contactForm">
+
+            <!-- NAMA -->
             <div class="form-group">
-                <label for="nama">Nama Lengkap:</label>
-                <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda..." required>
+
+                <label for="nama">
+                    Nama Lengkap:
+                </label>
+
+                <input
+                    type="text"
+                    id="nama"
+                    name="nama"
+                    placeholder="Masukkan nama Anda..."
+                    required
+                >
+
             </div>
 
+
+            <!-- EMAIL / NOMOR HP -->
             <div class="form-group">
-                <label for="email">Email / Nomor HP:</label>
-                <input type="text" id="email" name="email" placeholder="Contoh: 08123456789 atau nama@email.com" required>
+
+                <label for="email">
+                    Email / Nomor HP:
+                </label>
+
+                <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="Contoh: 08123456789 atau nama@email.com"
+                    required
+                >
+
             </div>
 
+
+            <!-- PESAN -->
             <div class="form-group">
-                <label for="pesan">Pesan / Pertanyaan:</label>
-                <textarea id="pesan" name="pesan" rows="5" placeholder="Tuliskan pesan Anda di sini..." required></textarea>
+
+                <label for="pesan">
+                    Pesan / Pertanyaan:
+                </label>
+
+                <textarea
+                    id="pesan"
+                    name="pesan"
+                    rows="5"
+                    placeholder="Tuliskan pesan Anda di sini..."
+                    required
+                ></textarea>
+
             </div>
 
-            <button type="submit">Kirim Pesan</button>
+
+            <!-- TOMBOL -->
+            <button
+                type="submit"
+                id="submitButton"
+            >
+                Kirim Pesan
+            </button>
+
+
+            <!-- STATUS -->
+            <p id="status"></p>
+
         </form>
+
 
         <hr style="margin: 30px 0;">
 
+
+        <!-- INFORMASI KANTOR -->
         <h3>Informasi Kantor Desa</h3>
-        <p><strong>Alamat Kantor Desa:</strong> Jalan Desa Seburing Hilir</p>
-        <p><strong>Jam Operasional:</strong> Senin - Jumat (08.00 - 15.00 WIB)</p>
+
+        <p>
+            <strong>Alamat Kantor Desa:</strong>
+            Jalan Desa Seburing Hilir
+        </p>
+
+        <p>
+            <strong>Jam Operasional:</strong>
+            Senin - Jumat (08.00 - 15.00 WIB)
+        </p>
+
     </div>
 
+
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Pemerintah Desa Seburing Hilir. All Rights Reserved.</p>
+
+        <p>
+            &copy; 2026 Pemerintah Desa Seburing Hilir.
+            All Rights Reserved.
+        </p>
+
     </footer>
+
+
+    <!-- ========================================= -->
+    <!-- GOOGLE APPS SCRIPT / DATABASE -->
+    <!-- ========================================= -->
+
+    <script>
+
+        // URL GOOGLE APPS SCRIPT
+        const scriptURL =
+        "https://script.google.com/macros/s/AKfycbzwtNZV_Sb48DyaFnZKMyWiGHJmDQEMTGAStLrqNenB66Bt5pPQlnQPsp07zqIECvdyw/exec";
+
+
+        // Mengambil form
+        const form =
+        document.getElementById("contactForm");
+
+
+        // Mengambil tulisan status
+        const status =
+        document.getElementById("status");
+
+
+        // Mengambil tombol
+        const submitButton =
+        document.getElementById("submitButton");
+
+
+        // Ketika tombol Kirim Pesan ditekan
+        form.addEventListener("submit", function(e) {
+
+            // Mencegah halaman melakukan refresh
+            e.preventDefault();
+
+
+            // Mengambil data dari form
+            const data = {
+
+                nama:
+                document.getElementById("nama").value,
+
+                email:
+                document.getElementById("email").value,
+
+                pesan:
+                document.getElementById("pesan").value
+
+            };
+
+
+            // Mengubah tombol
+            submitButton.disabled = true;
+            submitButton.innerText = "Mengirim...";
+
+
+            // Menampilkan status
+            status.innerText =
+            "Sedang mengirim pesan...";
+
+
+            // Mengirim data ke Google Apps Script
+            fetch(scriptURL, {
+
+                method: "POST",
+
+                mode: "no-cors",
+
+                body: JSON.stringify(data)
+
+            })
+
+
+            // Jika berhasil
+            .then(function() {
+
+                status.innerText =
+                "✅ Pesan berhasil dikirim!";
+
+                // Mengosongkan form
+                form.reset();
+
+                // Mengaktifkan tombol kembali
+                submitButton.disabled = false;
+
+                submitButton.innerText =
+                "Kirim Pesan";
+
+            })
+
+
+            // Jika gagal
+            .catch(function(error) {
+
+                console.error(error);
+
+                status.innerText =
+                "❌ Pesan gagal dikirim.";
+
+                submitButton.disabled = false;
+
+                submitButton.innerText =
+                "Kirim Pesan";
+
+            });
+
+        });
+
+    </script>
 
 </body>
 </html>
