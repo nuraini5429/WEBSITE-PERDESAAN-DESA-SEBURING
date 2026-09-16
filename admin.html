@@ -1,211 +1,225 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Admin - Desa Seburing Hilir</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+<title>Admin Desa Seburing Hilir</title>
 
-        body {
-            background: #f4f7f5;
-        }
+<style>
 
-        /* LOGIN */
-        .login-container {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #dff5e5, #ffffff);
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
 
-        .login-box {
-            width: 380px;
-            background: white;
-            padding: 35px;
-            border-radius: 18px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-        }
+body {
+    background: #f3f7f4;
+}
 
-        .login-box h1 {
-            text-align: center;
-            color: #287a45;
-            margin-bottom: 8px;
-        }
+/* LOGIN */
 
-        .login-box p {
-            text-align: center;
-            color: #777;
-            margin-bottom: 25px;
-        }
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #dff4e5, #ffffff);
+}
 
-        .login-box input {
-            width: 100%;
-            padding: 13px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            outline: none;
-        }
+.login-box {
+    width: 380px;
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
 
-        .login-box button {
-            width: 100%;
-            padding: 13px;
-            border: none;
-            border-radius: 8px;
-            background: #287a45;
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-        }
+.login-box h1 {
+    text-align: center;
+    color: #287a45;
+    margin-bottom: 8px;
+}
 
-        .login-box button:hover {
-            background: #1e6035;
-        }
+.login-box p {
+    text-align: center;
+    color: #777;
+    margin-bottom: 25px;
+}
 
-        #error {
-            color: red;
-            text-align: center;
-            margin-top: 12px;
-        }
+input,
+textarea {
+    width: 100%;
+    padding: 13px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
 
-        /* DASHBOARD */
-        #dashboard {
-            display: none;
-        }
+textarea {
+    height: 120px;
+    resize: vertical;
+}
 
-        .navbar {
-            background: #287a45;
-            color: white;
-            padding: 18px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+button {
+    cursor: pointer;
+}
 
-        .navbar h2 {
-            font-size: 21px;
-        }
+.login-btn {
+    width: 100%;
+    padding: 13px;
+    background: #287a45;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
 
-        .logout {
-            background: white;
-            color: #287a45;
-            border: none;
-            padding: 9px 16px;
-            border-radius: 7px;
-            cursor: pointer;
-        }
+#error {
+    text-align: center;
+    color: red;
+    margin-top: 12px;
+}
 
-        .container {
-            padding: 30px;
-            max-width: 1200px;
-            margin: auto;
-        }
 
-        .welcome {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-        }
+/* DASHBOARD */
 
-        .welcome h1 {
-            color: #287a45;
-            margin-bottom: 8px;
-        }
+#dashboard {
+    display: none;
+}
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
+.navbar {
+    background: #287a45;
+    color: white;
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-        }
+.logout {
+    background: white;
+    color: #287a45;
+    border: none;
+    padding: 9px 17px;
+    border-radius: 7px;
+}
 
-        .card h3 {
-            color: #287a45;
-            margin-bottom: 10px;
-        }
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px;
+}
 
-        .card p {
-            color: #666;
-        }
+.welcome {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
 
-        .admin-menu {
-            margin-top: 30px;
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-        }
+.welcome h1 {
+    color: #287a45;
+    margin-bottom: 8px;
+}
 
-        .admin-menu h2 {
-            margin-bottom: 20px;
-            color: #287a45;
-        }
+.menu {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
 
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
+.menu button {
+    border: none;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    color: #287a45;
+    box-shadow: 0 3px 12px rgba(0,0,0,.07);
+}
 
-        .menu-button {
-            padding: 18px;
-            border: none;
-            border-radius: 10px;
-            background: #e8f5ec;
-            color: #287a45;
-            font-size: 16px;
-            cursor: pointer;
-            text-align: left;
-        }
+.menu button:hover {
+    background: #e5f4e9;
+}
 
-        .menu-button:hover {
-            background: #d4eddb;
-        }
+.form-box {
+    display: none;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
 
-        @media (max-width: 800px) {
-            .cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+.form-box h2 {
+    color: #287a45;
+    margin-bottom: 20px;
+}
 
-        @media (max-width: 500px) {
-            .cards,
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
+.save-btn {
+    background: #287a45;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+}
 
-            .container {
-                padding: 15px;
-            }
+.back-btn {
+    background: #ddd;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-left: 5px;
+}
 
-            .login-box {
-                width: 90%;
-            }
-        }
-    </style>
+.message {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+@media(max-width: 800px) {
+
+    .menu {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 500px) {
+
+    .menu {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .navbar {
+        padding: 15px;
+    }
+
+    .navbar h2 {
+        font-size: 16px;
+    }
+
+}
+
+</style>
+
 </head>
 
 <body>
 
+
 <!-- ================= LOGIN ================= -->
 
-<div class="login-container" id="loginPage">
+<div class="login-page" id="loginPage">
 
     <div class="login-box">
 
@@ -225,7 +239,7 @@
             placeholder="Password"
         >
 
-        <button onclick="login()">
+        <button class="login-btn" onclick="login()">
             Login
         </button>
 
@@ -253,108 +267,239 @@
 
     <div class="container">
 
+
         <div class="welcome">
 
             <h1>Dashboard Admin</h1>
 
             <p>
-                Selamat datang di halaman administrator
-                Website Desa Seburing Hilir.
+                Kelola informasi Website Desa Seburing Hilir
+                melalui halaman administrator.
             </p>
 
         </div>
 
 
-        <!-- STATISTIK -->
+        <!-- MENU -->
 
-        <div class="cards">
+        <div class="menu">
 
-            <div class="card">
+            <button onclick="showForm('profil')">
+                🏡<br><br>
+                Kelola Profil
+            </button>
 
-                <h3>🏡 Profil</h3>
+            <button onclick="showForm('potensi')">
+                🌱<br><br>
+                Kelola Potensi
+            </button>
 
-                <p>
-                    Kelola informasi profil desa.
-                </p>
+            <button onclick="showForm('galeri')">
+                📷<br><br>
+                Kelola Galeri
+            </button>
 
-            </div>
-
-
-            <div class="card">
-
-                <h3>🌱 Potensi</h3>
-
-                <p>
-                    Kelola informasi potensi desa.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>📷 Galeri</h3>
-
-                <p>
-                    Kelola foto dan dokumentasi desa.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <h3>📩 Kontak</h3>
-
-                <p>
-                    Kelola informasi kontak desa.
-                </p>
-
-            </div>
+            <button onclick="showForm('kontak')">
+                📩<br><br>
+                Kelola Kontak
+            </button>
 
         </div>
 
 
-        <!-- MENU ADMIN -->
+        <!-- ================= PROFIL ================= -->
 
-        <div class="admin-menu">
+        <div class="form-box" id="profil">
 
-            <h2>Menu Pengelolaan</h2>
+            <h2>🏡 Tambah Profil Desa</h2>
 
-            <div class="menu-grid">
+            <label>Judul</label>
 
-                <button
-                    class="menu-button"
-                    onclick="alert('Menu Profil akan dibuat selanjutnya.')"
-                >
-                    🏡 Kelola Profil Desa
-                </button>
+            <input
+                type="text"
+                id="profilJudul"
+                placeholder="Contoh: Tentang Desa Seburing Hilir"
+            >
+
+            <label>Isi Profil</label>
+
+            <textarea
+                id="profilIsi"
+                placeholder="Masukkan informasi profil desa..."
+            ></textarea>
+
+            <button
+                class="save-btn"
+                onclick="simpanProfil()"
+            >
+                💾 Simpan
+            </button>
+
+            <button
+                class="back-btn"
+                onclick="tutupForm()"
+            >
+                Kembali
+            </button>
+
+            <div
+                class="message"
+                id="profilMessage"
+            ></div>
+
+        </div>
 
 
-                <button
-                    class="menu-button"
-                    onclick="alert('Menu Potensi akan dibuat selanjutnya.')"
-                >
-                    🌱 Kelola Potensi Desa
-                </button>
+        <!-- ================= POTENSI ================= -->
+
+        <div class="form-box" id="potensi">
+
+            <h2>🌱 Tambah Potensi Desa</h2>
+
+            <label>Nama Potensi</label>
+
+            <input
+                type="text"
+                id="potensiNama"
+                placeholder="Contoh: Koperasi Merah Putih"
+            >
+
+            <label>Deskripsi</label>
+
+            <textarea
+                id="potensiDeskripsi"
+                placeholder="Masukkan deskripsi potensi..."
+            ></textarea>
+
+            <label>Link Gambar</label>
+
+            <input
+                type="text"
+                id="potensiGambar"
+                placeholder="Masukkan nama/link gambar"
+            >
+
+            <button
+                class="save-btn"
+                onclick="simpanPotensi()"
+            >
+                💾 Simpan
+            </button>
+
+            <button
+                class="back-btn"
+                onclick="tutupForm()"
+            >
+                Kembali
+            </button>
+
+            <div
+                class="message"
+                id="potensiMessage"
+            ></div>
+
+        </div>
 
 
-                <button
-                    class="menu-button"
-                    onclick="alert('Menu Galeri akan dibuat selanjutnya.')"
-                >
-                    📷 Kelola Galeri
-                </button>
+        <!-- ================= GALERI ================= -->
+
+        <div class="form-box" id="galeri">
+
+            <h2>📷 Tambah Galeri</h2>
+
+            <label>Judul Foto</label>
+
+            <input
+                type="text"
+                id="galeriJudul"
+                placeholder="Contoh: Jembatan Gantung"
+            >
+
+            <label>Link Gambar</label>
+
+            <input
+                type="text"
+                id="galeriGambar"
+                placeholder="Masukkan link gambar"
+            >
+
+            <label>Keterangan</label>
+
+            <textarea
+                id="galeriKeterangan"
+                placeholder="Masukkan keterangan foto..."
+            ></textarea>
+
+            <button
+                class="save-btn"
+                onclick="simpanGaleri()"
+            >
+                💾 Simpan
+            </button>
+
+            <button
+                class="back-btn"
+                onclick="tutupForm()"
+            >
+                Kembali
+            </button>
+
+            <div
+                class="message"
+                id="galeriMessage"
+            ></div>
+
+        </div>
 
 
-                <button
-                    class="menu-button"
-                    onclick="alert('Menu Kontak akan dibuat selanjutnya.')"
-                >
-                    📩 Kelola Kontak
-                </button>
+        <!-- ================= KONTAK ================= -->
 
-            </div>
+        <div class="form-box" id="kontak">
+
+            <h2>📩 Tambah Kontak</h2>
+
+            <label>Alamat</label>
+
+            <input
+                type="text"
+                id="kontakAlamat"
+                placeholder="Alamat Desa Seburing Hilir"
+            >
+
+            <label>Nomor Telepon</label>
+
+            <input
+                type="text"
+                id="kontakTelepon"
+                placeholder="Nomor telepon"
+            >
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="kontakEmail"
+                placeholder="Email desa"
+            >
+
+            <button
+                class="save-btn"
+                onclick="simpanKontak()"
+            >
+                💾 Simpan
+            </button>
+
+            <button
+                class="back-btn"
+                onclick="tutupForm()"
+            >
+                Kembali
+            </button>
+
+            <div
+                class="message"
+                id="kontakMessage"
+            ></div>
 
         </div>
 
@@ -365,6 +510,16 @@
 
 <script>
 
+/* URL APPS SCRIPT */
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbxjWz05aCG4XsrIK9dTCy4r4jQFsOWMX4_PqSPc90d-Z8It0BhxuYK18ObOp6Ma8cnW-A/exec";
+
+
+/* =========================
+   LOGIN
+========================= */
+
 function login() {
 
     const username =
@@ -374,21 +529,21 @@ function login() {
         document.getElementById("password").value;
 
 
-    /*
-       LOGIN DEMO
-       Username : admin
-       Password : admin123
-    */
+    if (
+        username === "admin" &&
+        password === "admin123"
+    ) {
 
-    if (username === "admin" && password === "admin123") {
+        document.getElementById("loginPage")
+            .style.display = "none";
 
-        document.getElementById("loginPage").style.display = "none";
-
-        document.getElementById("dashboard").style.display = "block";
+        document.getElementById("dashboard")
+            .style.display = "block";
 
     } else {
 
-        document.getElementById("error").innerText =
+        document.getElementById("error")
+            .innerText =
             "Username atau password salah!";
 
     }
@@ -396,17 +551,244 @@ function login() {
 }
 
 
+/* =========================
+   LOGOUT
+========================= */
+
 function logout() {
 
-    document.getElementById("dashboard").style.display = "none";
+    document.getElementById("dashboard")
+        .style.display = "none";
 
-    document.getElementById("loginPage").style.display = "flex";
+    document.getElementById("loginPage")
+        .style.display = "flex";
 
     document.getElementById("username").value = "";
 
     document.getElementById("password").value = "";
 
-    document.getElementById("error").innerText = "";
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+function showForm(id) {
+
+    document.querySelectorAll(".form-box")
+        .forEach(function(form) {
+
+            form.style.display = "none";
+
+        });
+
+    document.getElementById(id)
+        .style.display = "block";
+
+}
+
+
+function tutupForm() {
+
+    document.querySelectorAll(".form-box")
+        .forEach(function(form) {
+
+            form.style.display = "none";
+
+        });
+
+}
+
+
+/* =========================
+   KIRIM DATA
+========================= */
+
+function kirimData(params, messageId) {
+
+    const script =
+        document.createElement("script");
+
+    const callback =
+        "callback_" + Date.now();
+
+    window[callback] = function(data) {
+
+        document.getElementById(messageId)
+            .innerText =
+            data.message || "Data berhasil disimpan.";
+
+        delete window[callback];
+
+        document.body.removeChild(script);
+
+    };
+
+    params.callback = callback;
+
+    const query =
+        new URLSearchParams(params).toString();
+
+    script.src =
+        SCRIPT_URL + "?" + query;
+
+    document.body.appendChild(script);
+
+}
+
+
+/* =========================
+   PROFIL
+========================= */
+
+function simpanProfil() {
+
+    const judul =
+        document.getElementById("profilJudul").value;
+
+    const isi =
+        document.getElementById("profilIsi").value;
+
+
+    if (!judul || !isi) {
+
+        alert("Judul dan isi profil harus diisi!");
+
+        return;
+
+    }
+
+
+    kirimData({
+
+        action: "simpanProfil",
+
+        judul: judul,
+
+        isi: isi
+
+    }, "profilMessage");
+
+}
+
+
+/* =========================
+   POTENSI
+========================= */
+
+function simpanPotensi() {
+
+    const nama =
+        document.getElementById("potensiNama").value;
+
+    const deskripsi =
+        document.getElementById("potensiDeskripsi").value;
+
+    const gambar =
+        document.getElementById("potensiGambar").value;
+
+
+    if (!nama || !deskripsi) {
+
+        alert("Nama dan deskripsi harus diisi!");
+
+        return;
+
+    }
+
+
+    kirimData({
+
+        action: "simpanPotensi",
+
+        nama: nama,
+
+        deskripsi: deskripsi,
+
+        gambar: gambar
+
+    }, "potensiMessage");
+
+}
+
+
+/* =========================
+   GALERI
+========================= */
+
+function simpanGaleri() {
+
+    const judul =
+        document.getElementById("galeriJudul").value;
+
+    const gambar =
+        document.getElementById("galeriGambar").value;
+
+    const keterangan =
+        document.getElementById("galeriKeterangan").value;
+
+
+    if (!judul || !gambar) {
+
+        alert("Judul dan gambar harus diisi!");
+
+        return;
+
+    }
+
+
+    kirimData({
+
+        action: "simpanGaleri",
+
+        judul: judul,
+
+        gambar: gambar,
+
+        keterangan: keterangan
+
+    }, "galeriMessage");
+
+}
+
+
+/* =========================
+   KONTAK
+========================= */
+
+function simpanKontak() {
+
+    const alamat =
+        document.getElementById("kontakAlamat").value;
+
+    const telepon =
+        document.getElementById("kontakTelepon").value;
+
+    const email =
+        document.getElementById("kontakEmail").value;
+
+
+    if (!alamat || !telepon || !email) {
+
+        alert("Semua data kontak harus diisi!");
+
+        return;
+
+    }
+
+
+    kirimData({
+
+        action: "simpanKontak",
+
+        alamat: alamat,
+
+        telepon: telepon,
+
+        email: email
+
+    }, "kontakMessage");
 
 }
 
@@ -414,4 +796,3 @@ function logout() {
 
 </body>
 </html>
-```
