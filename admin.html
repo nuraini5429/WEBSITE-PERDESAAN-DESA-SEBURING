@@ -1,0 +1,417 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin - Desa Seburing Hilir</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7f5;
+        }
+
+        /* LOGIN */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #dff5e5, #ffffff);
+        }
+
+        .login-box {
+            width: 380px;
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .login-box h1 {
+            text-align: center;
+            color: #287a45;
+            margin-bottom: 8px;
+        }
+
+        .login-box p {
+            text-align: center;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .login-box button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #287a45;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .login-box button:hover {
+            background: #1e6035;
+        }
+
+        #error {
+            color: red;
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        /* DASHBOARD */
+        #dashboard {
+            display: none;
+        }
+
+        .navbar {
+            background: #287a45;
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h2 {
+            font-size: 21px;
+        }
+
+        .logout {
+            background: white;
+            color: #287a45;
+            border: none;
+            padding: 9px 16px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .welcome {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .welcome h1 {
+            color: #287a45;
+            margin-bottom: 8px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            color: #287a45;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+        }
+
+        .admin-menu {
+            margin-top: 30px;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .admin-menu h2 {
+            margin-bottom: 20px;
+            color: #287a45;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .menu-button {
+            padding: 18px;
+            border: none;
+            border-radius: 10px;
+            background: #e8f5ec;
+            color: #287a45;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .menu-button:hover {
+            background: #d4eddb;
+        }
+
+        @media (max-width: 800px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .cards,
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .login-box {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= LOGIN ================= -->
+
+<div class="login-container" id="loginPage">
+
+    <div class="login-box">
+
+        <h1>🌿 Admin Desa</h1>
+
+        <p>Desa Seburing Hilir</p>
+
+        <input
+            type="text"
+            id="username"
+            placeholder="Username"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+        >
+
+        <button onclick="login()">
+            Login
+        </button>
+
+        <div id="error"></div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<div id="dashboard">
+
+    <div class="navbar">
+
+        <h2>🌿 Admin Desa Seburing Hilir</h2>
+
+        <button class="logout" onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+
+    <div class="container">
+
+        <div class="welcome">
+
+            <h1>Dashboard Admin</h1>
+
+            <p>
+                Selamat datang di halaman administrator
+                Website Desa Seburing Hilir.
+            </p>
+
+        </div>
+
+
+        <!-- STATISTIK -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>🏡 Profil</h3>
+
+                <p>
+                    Kelola informasi profil desa.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>🌱 Potensi</h3>
+
+                <p>
+                    Kelola informasi potensi desa.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>📷 Galeri</h3>
+
+                <p>
+                    Kelola foto dan dokumentasi desa.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>📩 Kontak</h3>
+
+                <p>
+                    Kelola informasi kontak desa.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- MENU ADMIN -->
+
+        <div class="admin-menu">
+
+            <h2>Menu Pengelolaan</h2>
+
+            <div class="menu-grid">
+
+                <button
+                    class="menu-button"
+                    onclick="alert('Menu Profil akan dibuat selanjutnya.')"
+                >
+                    🏡 Kelola Profil Desa
+                </button>
+
+
+                <button
+                    class="menu-button"
+                    onclick="alert('Menu Potensi akan dibuat selanjutnya.')"
+                >
+                    🌱 Kelola Potensi Desa
+                </button>
+
+
+                <button
+                    class="menu-button"
+                    onclick="alert('Menu Galeri akan dibuat selanjutnya.')"
+                >
+                    📷 Kelola Galeri
+                </button>
+
+
+                <button
+                    class="menu-button"
+                    onclick="alert('Menu Kontak akan dibuat selanjutnya.')"
+                >
+                    📩 Kelola Kontak
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function login() {
+
+    const username =
+        document.getElementById("username").value;
+
+    const password =
+        document.getElementById("password").value;
+
+
+    /*
+       LOGIN DEMO
+       Username : admin
+       Password : admin123
+    */
+
+    if (username === "admin" && password === "admin123") {
+
+        document.getElementById("loginPage").style.display = "none";
+
+        document.getElementById("dashboard").style.display = "block";
+
+    } else {
+
+        document.getElementById("error").innerText =
+            "Username atau password salah!";
+
+    }
+
+}
+
+
+function logout() {
+
+    document.getElementById("dashboard").style.display = "none";
+
+    document.getElementById("loginPage").style.display = "flex";
+
+    document.getElementById("username").value = "";
+
+    document.getElementById("password").value = "";
+
+    document.getElementById("error").innerText = "";
+
+}
+
+</script>
+
+</body>
+</html>
+```
