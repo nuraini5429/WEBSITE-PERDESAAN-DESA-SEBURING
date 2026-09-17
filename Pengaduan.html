@@ -1,0 +1,569 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pengaduan - Desa Seburing Hilir</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f3f7f4;
+            color: #333;
+        }
+
+        nav {
+            background: #2e7d32;
+            padding: 15px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .judul {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .judul h1 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .card h2 {
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            background: #2e7d32;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #256628;
+        }
+
+        button:disabled {
+            background: #999;
+            cursor: not-allowed;
+        }
+
+        .hasil {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #e8f5e9;
+            border: 1px solid #81c784;
+        }
+
+        .token {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2e7d32;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .error {
+            background: #ffebee;
+            border: 1px solid #ef9a9a;
+            color: #c62828;
+        }
+
+        .loading {
+            text-align: center;
+            margin-top: 15px;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">🌿 Seburing Hilir</div>
+
+    <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="profil.html">Profil</a></li>
+        <li><a href="sejarah.html">Sejarah</a></li>
+        <li><a href="potensi.html">Potensi</a></li>
+        <li><a href="galeri.html">Galeri</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+        <li><a href="pengaduan.html" class="active">Pengaduan</a></li>
+    </ul>
+</nav>
+
+
+<div class="container">
+
+    <div class="judul">
+        <h1>Pengaduan Masyarakat</h1>
+        <p>
+            Sampaikan pengaduan atau keluhan kepada Desa Seburing Hilir.
+        </p>
+    </div>
+
+
+    <!-- FORM PENGADUAN -->
+    <div class="card">
+
+        <h2>📝 Kirim Pengaduan</h2>
+
+        <form id="formPengaduan">
+
+            <label>Nama</label>
+            <input
+                type="text"
+                id="nama"
+                required
+                placeholder="Masukkan nama lengkap"
+            >
+
+            <label>NIK</label>
+            <input
+                type="text"
+                id="nik"
+                required
+                placeholder="Masukkan NIK"
+            >
+
+            <label>No. HP</label>
+            <input
+                type="text"
+                id="nohp"
+                required
+                placeholder="Masukkan nomor HP"
+            >
+
+            <label>Kategori</label>
+            <select id="kategori" required>
+                <option value="">-- Pilih Kategori --</option>
+                <option value="Infrastruktur">Infrastruktur</option>
+                <option value="Pelayanan Desa">Pelayanan Desa</option>
+                <option value="Kebersihan">Kebersihan</option>
+                <option value="Keamanan">Keamanan</option>
+                <option value="Sosial">Sosial</option>
+                <option value="Lainnya">Lainnya</option>
+            </select>
+
+            <label>Isi Pengaduan</label>
+            <textarea
+                id="pengaduan"
+                required
+                placeholder="Tuliskan pengaduan Anda..."
+            ></textarea>
+
+            <button type="submit" id="btnKirim">
+                Kirim Pengaduan
+            </button>
+
+            <div id="loading" class="loading"></div>
+
+        </form>
+
+
+        <div id="hasil" class="hasil"></div>
+
+    </div>
+
+
+    <!-- CEK STATUS -->
+    <div class="card">
+
+        <h2>🔎 Cek Status Pengaduan</h2>
+
+        <label>Token Pengaduan</label>
+
+        <input
+            type="text"
+            id="tokenCek"
+            placeholder="Contoh: ADU-20260917-002"
+        >
+
+        <button onclick="cekStatus()">
+            Cek Status
+        </button>
+
+        <div id="hasilCek" class="hasil"></div>
+
+    </div>
+
+</div>
+
+
+<footer>
+    © 2026 Desa Seburing Hilir
+</footer>
+
+
+<script>
+
+// ==========================================
+// URL GOOGLE APPS SCRIPT
+// ==========================================
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbzwtNZV_Sb48DyaFnZKMyWiGHJmDQEMTGAStLrqNenB66Bt5pPQlnQPspx07zqIECvdyw/exec";
+
+
+// ==========================================
+// KIRIM PENGADUAN
+// ==========================================
+document
+.getElementById("formPengaduan")
+.addEventListener("submit", async function(e) {
+
+    e.preventDefault();
+
+    const btn =
+        document.getElementById("btnKirim");
+
+    const loading =
+        document.getElementById("loading");
+
+    const hasil =
+        document.getElementById("hasil");
+
+    btn.disabled = true;
+
+    loading.innerHTML =
+        "Mengirim pengaduan...";
+
+    hasil.style.display = "none";
+
+
+    const data = {
+
+        action: "kirimPengaduan",
+
+        nama:
+            document.getElementById("nama").value,
+
+        nik:
+            document.getElementById("nik").value,
+
+        nohp:
+            document.getElementById("nohp").value,
+
+        kategori:
+            document.getElementById("kategori").value,
+
+        pengaduan:
+            document.getElementById("pengaduan").value
+
+    };
+
+
+    try {
+
+        const response =
+            await fetch(
+                SCRIPT_URL,
+                {
+                    method: "POST",
+
+                    body: JSON.stringify(data)
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (result.success) {
+
+            hasil.className = "hasil";
+
+            hasil.innerHTML = `
+                <h3>✅ Pengaduan Berhasil Dikirim</h3>
+
+                <p>Token pengaduan Anda:</p>
+
+                <div class="token">
+                    ${result.token}
+                </div>
+
+                <p>
+                    Simpan token ini untuk mengecek
+                    status pengaduan Anda.
+                </p>
+            `;
+
+            hasil.style.display = "block";
+
+            document
+                .getElementById("formPengaduan")
+                .reset();
+
+        } else {
+
+            hasil.className =
+                "hasil error";
+
+            hasil.innerHTML =
+                "❌ " + result.message;
+
+            hasil.style.display =
+                "block";
+
+        }
+
+    }
+
+    catch (error) {
+
+        hasil.className =
+            "hasil error";
+
+        hasil.innerHTML =
+            "❌ Gagal terhubung ke server.";
+
+        hasil.style.display =
+            "block";
+
+        console.error(error);
+
+    }
+
+
+    btn.disabled = false;
+
+    loading.innerHTML = "";
+
+});
+
+
+// ==========================================
+// CEK STATUS PENGADUAN
+// ==========================================
+async function cekStatus() {
+
+    const token =
+        document
+            .getElementById("tokenCek")
+            .value
+            .trim();
+
+
+    const hasil =
+        document
+            .getElementById("hasilCek");
+
+
+    if (!token) {
+
+        hasil.className =
+            "hasil error";
+
+        hasil.innerHTML =
+            "❌ Silakan masukkan token pengaduan.";
+
+        hasil.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    hasil.className =
+        "hasil";
+
+    hasil.innerHTML =
+        "⏳ Memeriksa pengaduan...";
+
+    hasil.style.display =
+        "block";
+
+
+    try {
+
+        const response =
+            await fetch(
+                SCRIPT_URL +
+                "?action=cekPengaduan&token=" +
+                encodeURIComponent(token)
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (result.success) {
+
+            const data =
+                result.data;
+
+
+            hasil.className =
+                "hasil";
+
+
+            hasil.innerHTML = `
+
+                <h3>📋 Data Pengaduan</h3>
+
+                <p>
+                    <strong>Token:</strong>
+                    ${data.token}
+                </p>
+
+                <p>
+                    <strong>Nama:</strong>
+                    ${data.nama}
+                </p>
+
+                <p>
+                    <strong>Kategori:</strong>
+                    ${data.kategori}
+                </p>
+
+                <p>
+                    <strong>Pengaduan:</strong>
+                    ${data.pengaduan}
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+                    ${data.status}
+                </p>
+
+                <p>
+                    <strong>Tanggapan:</strong>
+                    ${data.tanggapan}
+                </p>
+
+            `;
+
+        } else {
+
+            hasil.className =
+                "hasil error";
+
+            hasil.innerHTML =
+                "❌ " + result.message;
+
+        }
+
+    }
+
+    catch (error) {
+
+        hasil.className =
+            "hasil error";
+
+        hasil.innerHTML =
+            "❌ Gagal terhubung ke server.";
+
+        console.error(error);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
