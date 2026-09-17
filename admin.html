@@ -691,7 +691,7 @@ button {
 ================================================= */
 
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbw24iM51SJMRa5WsAD2oOAr-hMqmjJzWuV2cIhsSspvgeXAt85iUEOg6an2aaxeDvTaVg/exec";
+"https://script.google.com/macros/s/AKfycbz-Pe-q1d3MsLu29cQ_H9LC7QfuhDF8QzCisB3hPE26F1JGT5crWVOFpwxoMgRgIqzjhA/exec";
 
 
 /* =================================================
@@ -705,7 +705,6 @@ function login() {
 
     const password =
         document.getElementById("password").value;
-
 
     if (
         username === "admin" &&
@@ -763,7 +762,6 @@ function showForm(id) {
 
         });
 
-
     document.getElementById(id)
         .style.display = "block";
 
@@ -795,10 +793,8 @@ function kirimData(params, messageId) {
     const script =
         document.createElement("script");
 
-
     const callback =
         "callback_" + Date.now();
-
 
     window[callback] = function(data) {
 
@@ -807,9 +803,7 @@ function kirimData(params, messageId) {
             data.message ||
             "Data berhasil disimpan.";
 
-
         delete window[callback];
-
 
         if (document.body.contains(script)) {
 
@@ -819,18 +813,14 @@ function kirimData(params, messageId) {
 
     };
 
-
     params.callback = callback;
-
 
     const query =
         new URLSearchParams(params)
             .toString();
 
-
     script.src =
         SCRIPT_URL + "?" + query;
-
 
     document.body.appendChild(script);
 
@@ -843,7 +833,6 @@ function kirimData(params, messageId) {
 
 function tampilkanPesan() {
 
-    // Sembunyikan semua form
     document.querySelectorAll(".form-box")
         .forEach(function(form) {
 
@@ -851,13 +840,9 @@ function tampilkanPesan() {
 
         });
 
-
-    // Tampilkan form pesan
     document.getElementById("pesanMasuk")
         .style.display = "block";
 
-
-    // Loading
     document.getElementById("daftarPesan")
         .innerHTML = `
             <div class="loading">
@@ -865,22 +850,17 @@ function tampilkanPesan() {
             </div>
         `;
 
-
     const script =
         document.createElement("script");
 
-
     const callback =
         "pesanCallback_" + Date.now();
-
 
     window[callback] = function(data) {
 
         const daftar =
             document.getElementById("daftarPesan");
 
-
-        // Jika gagal
         if (
             !data ||
             data.status !== "success"
@@ -890,14 +870,14 @@ function tampilkanPesan() {
                 <div class="error-pesan">
                     ❌ Gagal mengambil pesan.
                     <br><br>
-                    Pastikan Code.gs sudah di-deploy
-                    sebagai versi terbaru.
+                    ${data && data.message
+                        ? escapeHTML(data.message)
+                        : "Pastikan Code.gs sudah di-deploy dengan benar."
+                    }
                 </div>
             `;
 
-
             delete window[callback];
-
 
             if (document.body.contains(script)) {
 
@@ -906,11 +886,9 @@ function tampilkanPesan() {
             }
 
             return;
-
         }
 
 
-        // Jika belum ada pesan
         if (
             !data.data ||
             data.data.length === 0
@@ -922,26 +900,18 @@ function tampilkanPesan() {
                 </div>
             `;
 
-        }
-
-
-        // Jika ada pesan
-        else {
+        } else {
 
             daftar.innerHTML = "";
 
-
-            // Pesan terbaru ditampilkan paling atas
             data.data.reverse()
                 .forEach(function(item) {
 
                     const kotak =
                         document.createElement("div");
 
-
                     kotak.className =
                         "pesan-card";
-
 
                     kotak.innerHTML = `
 
@@ -964,11 +934,10 @@ function tampilkanPesan() {
                         </p>
 
                         <small>
-                            🕒 ${formatWaktu(item.waktu)}
+                            🕒 ${escapeHTML(item.waktu)}
                         </small>
 
                     `;
-
 
                     daftar.appendChild(kotak);
 
@@ -978,7 +947,6 @@ function tampilkanPesan() {
 
 
         delete window[callback];
-
 
         if (document.body.contains(script)) {
 
@@ -994,40 +962,9 @@ function tampilkanPesan() {
         "?action=getPesan&callback=" +
         encodeURIComponent(callback);
 
-
     script.src = url;
 
-
     document.body.appendChild(script);
-
-}
-
-
-/* =================================================
-   FORMAT WAKTU
-================================================= */
-
-function formatWaktu(waktu) {
-
-    if (!waktu) {
-
-        return "-";
-
-    }
-
-
-    const tanggal =
-        new Date(waktu);
-
-
-    if (isNaN(tanggal.getTime())) {
-
-        return waktu;
-
-    }
-
-
-    return tanggal.toLocaleString("id-ID");
 
 }
 
@@ -1046,7 +983,6 @@ function escapeHTML(text) {
         return "";
 
     }
-
 
     return String(text)
 
@@ -1077,7 +1013,6 @@ function simpanProfil() {
         document.getElementById("profilIsi")
             .value;
 
-
     if (!judul || !isi) {
 
         alert(
@@ -1088,13 +1023,10 @@ function simpanProfil() {
 
     }
 
-
     kirimData({
 
         action: "simpanProfil",
-
         judul: judul,
-
         isi: isi
 
     }, "profilMessage");
@@ -1112,16 +1044,13 @@ function simpanPotensi() {
         document.getElementById("potensiNama")
             .value;
 
-
     const deskripsi =
         document.getElementById("potensiDeskripsi")
             .value;
 
-
     const gambar =
         document.getElementById("potensiGambar")
             .value;
-
 
     if (!nama || !deskripsi) {
 
@@ -1133,15 +1062,11 @@ function simpanPotensi() {
 
     }
 
-
     kirimData({
 
         action: "simpanPotensi",
-
         nama: nama,
-
         deskripsi: deskripsi,
-
         gambar: gambar
 
     }, "potensiMessage");
@@ -1159,16 +1084,13 @@ function simpanGaleri() {
         document.getElementById("galeriJudul")
             .value;
 
-
     const gambar =
         document.getElementById("galeriGambar")
             .value;
 
-
     const keterangan =
         document.getElementById("galeriKeterangan")
             .value;
-
 
     if (!judul || !gambar) {
 
@@ -1180,15 +1102,11 @@ function simpanGaleri() {
 
     }
 
-
     kirimData({
 
         action: "simpanGaleri",
-
         judul: judul,
-
         gambar: gambar,
-
         keterangan: keterangan
 
     }, "galeriMessage");
@@ -1206,16 +1124,13 @@ function simpanKontak() {
         document.getElementById("kontakAlamat")
             .value;
 
-
     const telepon =
         document.getElementById("kontakTelepon")
             .value;
 
-
     const email =
         document.getElementById("kontakEmail")
             .value;
-
 
     if (
         !alamat ||
@@ -1231,15 +1146,11 @@ function simpanKontak() {
 
     }
 
-
     kirimData({
 
         action: "simpanKontak",
-
         alamat: alamat,
-
         telepon: telepon,
-
         email: email
 
     }, "kontakMessage");
