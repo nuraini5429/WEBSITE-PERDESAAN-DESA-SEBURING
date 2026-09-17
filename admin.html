@@ -203,10 +203,11 @@ button {
 
 .pesan-card {
     background: #f3f7f4;
-    padding: 18px;
+    padding: 20px;
     margin-bottom: 15px;
     border-radius: 10px;
     border-left: 5px solid #287a45;
+    box-shadow: 0 3px 10px rgba(0,0,0,.05);
 }
 
 .pesan-card strong {
@@ -216,6 +217,8 @@ button {
 .pesan-card p {
     margin-top: 8px;
     line-height: 1.6;
+    color: #333;
+    white-space: pre-wrap;
 }
 
 .pesan-card small {
@@ -224,7 +227,7 @@ button {
 
 .loading {
     text-align: center;
-    padding: 20px;
+    padding: 25px;
     color: #777;
 }
 
@@ -238,6 +241,8 @@ button {
     text-align: center;
     padding: 20px;
     color: red;
+    background: #fff0f0;
+    border-radius: 10px;
 }
 
 
@@ -269,6 +274,10 @@ button {
 
     .navbar h2 {
         font-size: 16px;
+    }
+
+    .login-box {
+        width: 90%;
     }
 
 }
@@ -340,7 +349,6 @@ button {
 
     <div class="container">
 
-
         <!-- WELCOME -->
 
         <div class="welcome">
@@ -367,13 +375,11 @@ button {
                 Kelola Profil
             </button>
 
-
             <button onclick="showForm('potensi')">
                 🌱
                 <br><br>
                 Kelola Potensi
             </button>
-
 
             <button onclick="showForm('galeri')">
                 📷
@@ -381,13 +387,11 @@ button {
                 Kelola Galeri
             </button>
 
-
             <button onclick="showForm('kontak')">
                 📩
                 <br><br>
                 Kelola Kontak
             </button>
-
 
             <button onclick="tampilkanPesan()">
                 💬
@@ -411,7 +415,6 @@ button {
                 💬 Pesan dari Pengunjung
             </h2>
 
-
             <div id="daftarPesan">
 
                 <div class="loading">
@@ -419,7 +422,6 @@ button {
                 </div>
 
             </div>
-
 
             <button
                 class="back-btn"
@@ -440,10 +442,7 @@ button {
             id="profil"
         >
 
-            <h2>
-                🏡 Tambah Profil Desa
-            </h2>
-
+            <h2>🏡 Tambah Profil Desa</h2>
 
             <label>Judul</label>
 
@@ -453,14 +452,12 @@ button {
                 placeholder="Contoh: Tentang Desa Seburing Hilir"
             >
 
-
             <label>Isi Profil</label>
 
             <textarea
                 id="profilIsi"
                 placeholder="Masukkan informasi profil desa..."
             ></textarea>
-
 
             <button
                 class="save-btn"
@@ -469,14 +466,12 @@ button {
                 💾 Simpan
             </button>
 
-
             <button
                 class="back-btn"
                 onclick="tutupForm()"
             >
                 Kembali
             </button>
-
 
             <div
                 class="message"
@@ -495,10 +490,7 @@ button {
             id="potensi"
         >
 
-            <h2>
-                🌱 Tambah Potensi Desa
-            </h2>
-
+            <h2>🌱 Tambah Potensi Desa</h2>
 
             <label>Nama Potensi</label>
 
@@ -508,14 +500,12 @@ button {
                 placeholder="Contoh: Koperasi Merah Putih"
             >
 
-
             <label>Deskripsi</label>
 
             <textarea
                 id="potensiDeskripsi"
                 placeholder="Masukkan deskripsi potensi..."
             ></textarea>
-
 
             <label>Link Gambar</label>
 
@@ -525,7 +515,6 @@ button {
                 placeholder="Masukkan nama/link gambar"
             >
 
-
             <button
                 class="save-btn"
                 onclick="simpanPotensi()"
@@ -533,14 +522,12 @@ button {
                 💾 Simpan
             </button>
 
-
             <button
                 class="back-btn"
                 onclick="tutupForm()"
             >
                 Kembali
             </button>
-
 
             <div
                 class="message"
@@ -559,10 +546,7 @@ button {
             id="galeri"
         >
 
-            <h2>
-                📷 Tambah Galeri
-            </h2>
-
+            <h2>📷 Tambah Galeri</h2>
 
             <label>Judul Foto</label>
 
@@ -572,7 +556,6 @@ button {
                 placeholder="Contoh: Jembatan Gantung"
             >
 
-
             <label>Link Gambar</label>
 
             <input
@@ -581,14 +564,12 @@ button {
                 placeholder="Masukkan link gambar"
             >
 
-
             <label>Keterangan</label>
 
             <textarea
                 id="galeriKeterangan"
                 placeholder="Masukkan keterangan foto..."
             ></textarea>
-
 
             <button
                 class="save-btn"
@@ -597,14 +578,12 @@ button {
                 💾 Simpan
             </button>
 
-
             <button
                 class="back-btn"
                 onclick="tutupForm()"
             >
                 Kembali
             </button>
-
 
             <div
                 class="message"
@@ -623,10 +602,7 @@ button {
             id="kontak"
         >
 
-            <h2>
-                📩 Tambah Kontak
-            </h2>
-
+            <h2>📩 Tambah Kontak</h2>
 
             <label>Alamat</label>
 
@@ -636,7 +612,6 @@ button {
                 placeholder="Alamat Desa Seburing Hilir"
             >
 
-
             <label>Nomor Telepon</label>
 
             <input
@@ -644,7 +619,6 @@ button {
                 id="kontakTelepon"
                 placeholder="Nomor telepon"
             >
-
 
             <label>Email</label>
 
@@ -654,14 +628,12 @@ button {
                 placeholder="Email desa"
             >
 
-
             <button
                 class="save-btn"
                 onclick="simpanKontak()"
             >
                 💾 Simpan
             </button>
-
 
             <button
                 class="back-btn"
@@ -670,14 +642,12 @@ button {
                 Kembali
             </button>
 
-
             <div
                 class="message"
                 id="kontakMessage"
             ></div>
 
         </div>
-
 
     </div>
 
@@ -687,7 +657,7 @@ button {
 <script>
 
 /* =================================================
-   URL APPS SCRIPT BARU
+   URL GOOGLE APPS SCRIPT
 ================================================= */
 
 const SCRIPT_URL =
@@ -701,7 +671,7 @@ const SCRIPT_URL =
 function login() {
 
     const username =
-        document.getElementById("username").value;
+        document.getElementById("username").value.trim();
 
     const password =
         document.getElementById("password").value;
@@ -716,6 +686,9 @@ function login() {
 
         document.getElementById("dashboard")
             .style.display = "block";
+
+        document.getElementById("error")
+            .innerText = "";
 
     } else {
 
@@ -785,7 +758,7 @@ function tutupForm() {
 
 
 /* =================================================
-   KIRIM DATA
+   KIRIM DATA KE GOOGLE SHEETS
 ================================================= */
 
 function kirimData(params, messageId) {
@@ -798,17 +771,35 @@ function kirimData(params, messageId) {
 
     window[callback] = function(data) {
 
-        document.getElementById(messageId)
-            .innerText =
-            data.message ||
-            "Data berhasil disimpan.";
+        const message =
+            document.getElementById(messageId);
+
+        if (data && data.status === "success") {
+
+            message.style.color = "#287a45";
+
+            message.innerText =
+                "✅ " +
+                (data.message ||
+                "Data berhasil disimpan.");
+
+        } else {
+
+            message.style.color = "red";
+
+            message.innerText =
+                "❌ " +
+                (data && data.message
+                    ? data.message
+                    : "Gagal menyimpan data."
+                );
+
+        }
 
         delete window[callback];
 
         if (document.body.contains(script)) {
-
             document.body.removeChild(script);
-
         }
 
     };
@@ -816,11 +807,28 @@ function kirimData(params, messageId) {
     params.callback = callback;
 
     const query =
-        new URLSearchParams(params)
-            .toString();
+        new URLSearchParams(params).toString();
 
     script.src =
         SCRIPT_URL + "?" + query;
+
+    script.onerror = function() {
+
+        const message =
+            document.getElementById(messageId);
+
+        message.style.color = "red";
+
+        message.innerText =
+            "❌ Gagal terhubung ke Google Apps Script.";
+
+        delete window[callback];
+
+        if (document.body.contains(script)) {
+            document.body.removeChild(script);
+        }
+
+    };
 
     document.body.appendChild(script);
 
@@ -828,7 +836,7 @@ function kirimData(params, messageId) {
 
 
 /* =================================================
-   TAMPILKAN PESAN DARI GOOGLE SHEETS
+   TAMPILKAN PESAN
 ================================================= */
 
 function tampilkanPesan() {
@@ -840,15 +848,20 @@ function tampilkanPesan() {
 
         });
 
-    document.getElementById("pesanMasuk")
-        .style.display = "block";
+    const pesanBox =
+        document.getElementById("pesanMasuk");
 
-    document.getElementById("daftarPesan")
-        .innerHTML = `
-            <div class="loading">
-                ⏳ Memuat pesan...
-            </div>
-        `;
+    pesanBox.style.display = "block";
+
+    const daftar =
+        document.getElementById("daftarPesan");
+
+    daftar.innerHTML = `
+        <div class="loading">
+            ⏳ Memuat pesan dari Google Sheets...
+        </div>
+    `;
+
 
     const script =
         document.createElement("script");
@@ -856,10 +869,8 @@ function tampilkanPesan() {
     const callback =
         "pesanCallback_" + Date.now();
 
-    window[callback] = function(data) {
 
-        const daftar =
-            document.getElementById("daftarPesan");
+    window[callback] = function(data) {
 
         if (
             !data ||
@@ -870,27 +881,22 @@ function tampilkanPesan() {
                 <div class="error-pesan">
                     ❌ Gagal mengambil pesan.
                     <br><br>
-                    ${data && data.message
+                    ${
+                        data && data.message
                         ? escapeHTML(data.message)
-                        : "Pastikan Code.gs sudah di-deploy dengan benar."
+                        : "Tidak dapat terhubung ke database."
                     }
                 </div>
             `;
 
-            delete window[callback];
-
-            if (document.body.contains(script)) {
-
-                document.body.removeChild(script);
-
-            }
+            bersihkanCallback();
 
             return;
         }
 
 
         if (
-            !data.data ||
+            !Array.isArray(data.data) ||
             data.data.length === 0
         ) {
 
@@ -900,57 +906,76 @@ function tampilkanPesan() {
                 </div>
             `;
 
-        } else {
+            bersihkanCallback();
 
-            daftar.innerHTML = "";
-
-            data.data.reverse()
-                .forEach(function(item) {
-
-                    const kotak =
-                        document.createElement("div");
-
-                    kotak.className =
-                        "pesan-card";
-
-                    kotak.innerHTML = `
-
-                        <strong>
-                            👤 ${escapeHTML(item.nama)}
-                        </strong>
-
-                        <br><br>
-
-                        📧 ${escapeHTML(item.email)}
-
-                        <br><br>
-
-                        <strong>
-                            💬 Pesan:
-                        </strong>
-
-                        <p>
-                            ${escapeHTML(item.pesan)}
-                        </p>
-
-                        <small>
-                            🕒 ${escapeHTML(item.waktu)}
-                        </small>
-
-                    `;
-
-                    daftar.appendChild(kotak);
-
-                });
-
+            return;
         }
 
 
-        delete window[callback];
+        /*
+         * Buat salinan array agar data asli
+         * tidak diubah oleh reverse()
+         */
+        const dataPesan =
+            data.data.slice().reverse();
 
-        if (document.body.contains(script)) {
 
-            document.body.removeChild(script);
+        daftar.innerHTML = "";
+
+
+        dataPesan.forEach(function(item) {
+
+            const kotak =
+                document.createElement("div");
+
+            kotak.className =
+                "pesan-card";
+
+
+            kotak.innerHTML = `
+
+                <strong>
+                    👤 ${escapeHTML(item.nama)}
+                </strong>
+
+                <br><br>
+
+                📧 ${escapeHTML(item.email)}
+
+                <br><br>
+
+                <strong>
+                    💬 Pesan:
+                </strong>
+
+                <p>
+                    ${escapeHTML(item.pesan)}
+                </p>
+
+                <small>
+                    🕒 ${escapeHTML(item.waktu)}
+                </small>
+
+            `;
+
+
+            daftar.appendChild(kotak);
+
+        });
+
+
+        bersihkanCallback();
+
+
+        function bersihkanCallback() {
+
+            delete window[callback];
+
+            if (document.body.contains(script)) {
+
+                document.body.removeChild(script);
+
+            }
 
         }
 
@@ -962,7 +987,28 @@ function tampilkanPesan() {
         "?action=getPesan&callback=" +
         encodeURIComponent(callback);
 
+
     script.src = url;
+
+
+    script.onerror = function() {
+
+        daftar.innerHTML = `
+            <div class="error-pesan">
+                ❌ Gagal menghubungi Google Apps Script.
+                <br><br>
+                Periksa kembali URL Web App.
+            </div>
+        `;
+
+        delete window[callback];
+
+        if (document.body.contains(script)) {
+            document.body.removeChild(script);
+        }
+
+    };
+
 
     document.body.appendChild(script);
 
@@ -985,15 +1031,10 @@ function escapeHTML(text) {
     }
 
     return String(text)
-
         .replace(/&/g, "&amp;")
-
         .replace(/</g, "&lt;")
-
         .replace(/>/g, "&gt;")
-
         .replace(/"/g, "&quot;")
-
         .replace(/'/g, "&#039;");
 
 }
@@ -1006,12 +1047,11 @@ function escapeHTML(text) {
 function simpanProfil() {
 
     const judul =
-        document.getElementById("profilJudul")
-            .value;
+        document.getElementById("profilJudul").value.trim();
 
     const isi =
-        document.getElementById("profilIsi")
-            .value;
+        document.getElementById("profilIsi").value.trim();
+
 
     if (!judul || !isi) {
 
@@ -1022,6 +1062,7 @@ function simpanProfil() {
         return;
 
     }
+
 
     kirimData({
 
@@ -1041,16 +1082,14 @@ function simpanProfil() {
 function simpanPotensi() {
 
     const nama =
-        document.getElementById("potensiNama")
-            .value;
+        document.getElementById("potensiNama").value.trim();
 
     const deskripsi =
-        document.getElementById("potensiDeskripsi")
-            .value;
+        document.getElementById("potensiDeskripsi").value.trim();
 
     const gambar =
-        document.getElementById("potensiGambar")
-            .value;
+        document.getElementById("potensiGambar").value.trim();
+
 
     if (!nama || !deskripsi) {
 
@@ -1061,6 +1100,7 @@ function simpanPotensi() {
         return;
 
     }
+
 
     kirimData({
 
@@ -1081,16 +1121,14 @@ function simpanPotensi() {
 function simpanGaleri() {
 
     const judul =
-        document.getElementById("galeriJudul")
-            .value;
+        document.getElementById("galeriJudul").value.trim();
 
     const gambar =
-        document.getElementById("galeriGambar")
-            .value;
+        document.getElementById("galeriGambar").value.trim();
 
     const keterangan =
-        document.getElementById("galeriKeterangan")
-            .value;
+        document.getElementById("galeriKeterangan").value.trim();
+
 
     if (!judul || !gambar) {
 
@@ -1101,6 +1139,7 @@ function simpanGaleri() {
         return;
 
     }
+
 
     kirimData({
 
@@ -1121,16 +1160,14 @@ function simpanGaleri() {
 function simpanKontak() {
 
     const alamat =
-        document.getElementById("kontakAlamat")
-            .value;
+        document.getElementById("kontakAlamat").value.trim();
 
     const telepon =
-        document.getElementById("kontakTelepon")
-            .value;
+        document.getElementById("kontakTelepon").value.trim();
 
     const email =
-        document.getElementById("kontakEmail")
-            .value;
+        document.getElementById("kontakEmail").value.trim();
+
 
     if (
         !alamat ||
@@ -1145,6 +1182,7 @@ function simpanKontak() {
         return;
 
     }
+
 
     kirimData({
 
