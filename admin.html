@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -21,7 +20,6 @@
 body {
     background: #f3f7f4;
 }
-
 
 /* =========================
    LOGIN
@@ -64,6 +62,7 @@ select {
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 8px;
+    font-size: 14px;
 }
 
 textarea {
@@ -90,7 +89,6 @@ button {
     color: red;
     margin-top: 12px;
 }
-
 
 /* =========================
    DASHBOARD
@@ -135,7 +133,6 @@ button {
     margin-bottom: 8px;
 }
 
-
 /* =========================
    MENU
 ========================= */
@@ -160,7 +157,6 @@ button {
 .menu button:hover {
     background: #e5f4e9;
 }
-
 
 /* =========================
    FORM
@@ -187,6 +183,10 @@ button {
     border-radius: 8px;
 }
 
+.save-btn:hover {
+    background: #1f6136;
+}
+
 .back-btn {
     background: #ddd;
     border: none;
@@ -199,7 +199,6 @@ button {
     margin-top: 15px;
     font-weight: bold;
 }
-
 
 /* =========================
    PESAN MASUK
@@ -229,60 +228,27 @@ button {
     color: #777;
 }
 
-.loading {
-    text-align: center;
-    padding: 25px;
-    color: #777;
-}
-
-.no-pesan {
-    text-align: center;
-    padding: 25px;
-    color: #777;
-}
-
-.error-pesan {
-    text-align: center;
-    padding: 20px;
-    color: red;
-    background: #fff0f0;
-    border-radius: 10px;
-}
-
-
 /* =========================
    PENGADUAN
 ========================= */
 
 .pengaduan-card {
-    background: #f3f7f4;
-    padding: 20px;
-    margin-bottom: 18px;
-    border-radius: 12px;
+    background: #f8fbf9;
+    padding: 22px;
+    margin-bottom: 20px;
+    border-radius: 14px;
     border-left: 5px solid #287a45;
+    box-shadow: 0 3px 12px rgba(0,0,0,.07);
 }
 
 .pengaduan-card h3 {
     color: #287a45;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .pengaduan-card p {
-    margin: 7px 0;
-    line-height: 1.5;
-}
-
-.tanggapan-box {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    margin-top: 15px;
-    border: 1px solid #ddd;
-}
-
-.tanggapan-box h3 {
-    color: #287a45;
-    margin-bottom: 15px;
+    margin: 9px 0;
+    line-height: 1.6;
 }
 
 .token {
@@ -292,13 +258,47 @@ button {
 
 .status-badge {
     display: inline-block;
-    padding: 5px 10px;
+    padding: 5px 12px;
     border-radius: 20px;
     background: #e8f5e9;
     color: #287a45;
     font-weight: bold;
 }
 
+.tanggapan-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+}
+
+.tanggapan-box h3 {
+    color: #287a45;
+    margin-bottom: 15px;
+}
+
+.pengaduan-loading {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+}
+
+.pengaduan-kosong {
+    text-align: center;
+    padding: 30px;
+    color: #777;
+    background: #f8f8f8;
+    border-radius: 10px;
+}
+
+.pengaduan-error {
+    text-align: center;
+    padding: 20px;
+    color: #b00020;
+    background: #fff0f0;
+    border-radius: 10px;
+}
 
 /* =========================
    RESPONSIVE
@@ -472,13 +472,11 @@ button {
             id="pesanMasuk"
         >
 
-            <h2>
-                💬 Pesan dari Pengunjung
-            </h2>
+            <h2>💬 Pesan dari Pengunjung</h2>
 
             <div id="daftarPesan">
 
-                <div class="loading">
+                <div class="pengaduan-loading">
                     ⏳ Memuat pesan...
                 </div>
 
@@ -503,13 +501,11 @@ button {
             id="pengaduanMasuk"
         >
 
-            <h2>
-                📢 Pengaduan Masyarakat
-            </h2>
+            <h2>📢 Pengaduan Masyarakat</h2>
 
             <div id="daftarPengaduan">
 
-                <div class="loading">
+                <div class="pengaduan-loading">
                     ⏳ Memuat pengaduan...
                 </div>
 
@@ -748,17 +744,16 @@ button {
 
 <script>
 
-
 /* =================================================
-   URL GOOGLE APPS SCRIPT PENGADUAN
+   URL GOOGLE APPS SCRIPT PENGADUAN BARU
 ================================================= */
 
 const PENGADUAN_URL =
-"https://script.google.com/macros/s/AKfycbzCaYPusHUs3keVvWSiMBk_AgQYBLS_ZtwhYfqDNrEX6eSE06m-O5S-K7DCZ0e66QJBXQ/exec";
+"https://script.google.com/macros/s/AKfycbwcveSJGIJw-N0otAwdBfUlsZ4-RLqKD1TEMbmUmc-xj57hBtYESmffsfuRFFBR7EHK2g/exec";
 
 
 /* =================================================
-   URL GOOGLE APPS SCRIPT LAMA ADMIN
+   URL GOOGLE APPS SCRIPT ADMIN LAMA
 ================================================= */
 
 const SCRIPT_URL =
@@ -859,7 +854,7 @@ function tutupForm() {
 
 
 /* =================================================
-   KIRIM DATA LAMA
+   KIRIM DATA ADMIN LAMA
 ================================================= */
 
 function kirimData(params, messageId) {
@@ -881,8 +876,10 @@ function kirimData(params, messageId) {
 
             message.innerText =
                 "✅ " +
-                (data.message ||
-                "Data berhasil disimpan.");
+                (
+                    data.message ||
+                    "Data berhasil disimpan."
+                );
 
         } else {
 
@@ -890,7 +887,8 @@ function kirimData(params, messageId) {
 
             message.innerText =
                 "❌ " +
-                (data && data.message
+                (
+                    data && data.message
                     ? data.message
                     : "Gagal menyimpan data."
                 );
@@ -900,18 +898,24 @@ function kirimData(params, messageId) {
         delete window[callback];
 
         if (document.body.contains(script)) {
+
             document.body.removeChild(script);
+
         }
 
     };
 
+
     params.callback = callback;
+
 
     const query =
         new URLSearchParams(params).toString();
 
+
     script.src =
         SCRIPT_URL + "?" + query;
+
 
     script.onerror = function() {
 
@@ -926,10 +930,13 @@ function kirimData(params, messageId) {
         delete window[callback];
 
         if (document.body.contains(script)) {
+
             document.body.removeChild(script);
+
         }
 
     };
+
 
     document.body.appendChild(script);
 
@@ -949,16 +956,19 @@ function tampilkanPesan() {
 
         });
 
+
     const pesanBox =
         document.getElementById("pesanMasuk");
 
     pesanBox.style.display = "block";
 
+
     const daftar =
         document.getElementById("daftarPesan");
 
+
     daftar.innerHTML = `
-        <div class="loading">
+        <div class="pengaduan-loading">
             ⏳ Memuat pesan dari Google Sheets...
         </div>
     `;
@@ -966,6 +976,7 @@ function tampilkanPesan() {
 
     const script =
         document.createElement("script");
+
 
     const callback =
         "pesanCallback_" + Date.now();
@@ -979,7 +990,7 @@ function tampilkanPesan() {
         ) {
 
             daftar.innerHTML = `
-                <div class="error-pesan">
+                <div class="pengaduan-error">
                     ❌ Gagal mengambil pesan.
                     <br><br>
                     ${
@@ -990,9 +1001,10 @@ function tampilkanPesan() {
                 </div>
             `;
 
-            bersihkanCallback();
+            bersihkan();
 
             return;
+
         }
 
 
@@ -1002,19 +1014,21 @@ function tampilkanPesan() {
         ) {
 
             daftar.innerHTML = `
-                <div class="no-pesan">
+                <div class="pengaduan-kosong">
                     📭 Belum ada pesan masuk.
                 </div>
             `;
 
-            bersihkanCallback();
+            bersihkan();
 
             return;
+
         }
 
 
         const dataPesan =
             data.data.slice().reverse();
+
 
         daftar.innerHTML = "";
 
@@ -1023,6 +1037,7 @@ function tampilkanPesan() {
 
             const kotak =
                 document.createElement("div");
+
 
             kotak.className =
                 "pesan-card";
@@ -1060,10 +1075,10 @@ function tampilkanPesan() {
         });
 
 
-        bersihkanCallback();
+        bersihkan();
 
 
-        function bersihkanCallback() {
+        function bersihkan() {
 
             delete window[callback];
 
@@ -1090,7 +1105,7 @@ function tampilkanPesan() {
     script.onerror = function() {
 
         daftar.innerHTML = `
-            <div class="error-pesan">
+            <div class="pengaduan-error">
                 ❌ Gagal menghubungi Google Apps Script.
                 <br><br>
                 Periksa kembali URL Web App.
@@ -1130,6 +1145,7 @@ function tampilkanPengaduan() {
     const box =
         document.getElementById("pengaduanMasuk");
 
+
     box.style.display = "block";
 
 
@@ -1138,8 +1154,8 @@ function tampilkanPengaduan() {
 
 
     daftar.innerHTML = `
-        <div class="loading">
-            ⏳ Memuat pengaduan...
+        <div class="pengaduan-loading">
+            ⏳ Memuat pengaduan masyarakat...
         </div>
     `;
 
@@ -1151,17 +1167,35 @@ function tampilkanPengaduan() {
 
     .then(function(response) {
 
+        if (!response.ok) {
+
+            throw new Error(
+                "HTTP " + response.status
+            );
+
+        }
+
         return response.json();
 
     })
 
     .then(function(result) {
 
+        console.log(
+            "Data pengaduan:",
+            result
+        );
+
+
         if (!result.success) {
 
             daftar.innerHTML = `
-                <div class="error-pesan">
-                    ❌ ${escapeHTML(result.message)}
+                <div class="pengaduan-error">
+                    ❌
+                    ${escapeHTML(
+                        result.message ||
+                        "Gagal mengambil pengaduan."
+                    )}
                 </div>
             `;
 
@@ -1171,12 +1205,12 @@ function tampilkanPengaduan() {
 
 
         if (
-            !result.data ||
+            !Array.isArray(result.data) ||
             result.data.length === 0
         ) {
 
             daftar.innerHTML = `
-                <div class="no-pesan">
+                <div class="pengaduan-kosong">
                     📭 Belum ada pengaduan masyarakat.
                 </div>
             `;
@@ -1194,124 +1228,10 @@ function tampilkanPengaduan() {
             .reverse()
             .forEach(function(item) {
 
-                const card =
-                    document.createElement("div");
-
-                card.className =
-                    "pengaduan-card";
-
-
-                card.innerHTML = `
-
-                    <h3>
-                        📢 Pengaduan
-                    </h3>
-
-                    <p>
-                        <strong>Token:</strong>
-                        <span class="token">
-                            ${escapeHTML(item.token)}
-                        </span>
-                    </p>
-
-                    <p>
-                        <strong>Nama:</strong>
-                        ${escapeHTML(item.nama)}
-                    </p>
-
-                    <p>
-                        <strong>NIK:</strong>
-                        ${escapeHTML(item.nik)}
-                    </p>
-
-                    <p>
-                        <strong>No. HP:</strong>
-                        ${escapeHTML(item.nohp)}
-                    </p>
-
-                    <p>
-                        <strong>Kategori:</strong>
-                        ${escapeHTML(item.kategori)}
-                    </p>
-
-                    <p>
-                        <strong>Isi Pengaduan:</strong><br>
-                        ${escapeHTML(item.pengaduan)}
-                    </p>
-
-                    <p>
-                        <strong>Status:</strong>
-                        <span class="status-badge">
-                            ${escapeHTML(item.status)}
-                        </span>
-                    </p>
-
-                    <p>
-                        <strong>Tanggapan Saat Ini:</strong><br>
-                        ${escapeHTML(item.tanggapan || "-")}
-                    </p>
-
-                    <div class="tanggapan-box">
-
-                        <h3>
-                            💬 Tanggapi Pengaduan
-                        </h3>
-
-                        <label>Status</label>
-
-                        <select
-                            id="status-${escapeId(item.token)}">
-
-                            <option value="Menunggu"
-                                ${item.status === "Menunggu" ? "selected" : ""}>
-                                Menunggu
-                            </option>
-
-                            <option value="Diproses"
-                                ${item.status === "Diproses" ? "selected" : ""}>
-                                Diproses
-                            </option>
-
-                            <option value="Selesai"
-                                ${item.status === "Selesai" ? "selected" : ""}>
-                                Selesai
-                            </option>
-
-                            <option value="Ditolak"
-                                ${item.status === "Ditolak" ? "selected" : ""}>
-                                Ditolak
-                            </option>
-
-                        </select>
-
-
-                        <label>Tanggapan Admin</label>
-
-                        <textarea
-                            id="tanggapan-${escapeId(item.token)}"
-                            placeholder="Tuliskan tanggapan untuk masyarakat..."
-                        >${item.tanggapan === "-" ? "" : escapeHTML(item.tanggapan)}</textarea>
-
-
-                        <button
-                            class="save-btn"
-                            onclick="simpanTanggapan('${escapeJS(item.token)}')">
-
-                            💾 Simpan Tanggapan
-
-                        </button>
-
-                        <div
-                            class="message"
-                            id="message-${escapeId(item.token)}">
-                        </div>
-
-                    </div>
-
-                `;
-
-
-                daftar.appendChild(card);
+                buatKartuPengaduan(
+                    item,
+                    daftar
+                );
 
             });
 
@@ -1319,11 +1239,29 @@ function tampilkanPengaduan() {
 
     .catch(function(error) {
 
-        console.error(error);
+        console.error(
+            "Error pengaduan:",
+            error
+        );
+
 
         daftar.innerHTML = `
-            <div class="error-pesan">
+            <div class="pengaduan-error">
+
                 ❌ Gagal terhubung ke server pengaduan.
+
+                <br><br>
+
+                Pastikan Apps Script sudah di-deploy
+                sebagai Web App dan aksesnya
+                diatur menjadi "Anyone".
+
+                <br><br>
+
+                <small>
+                    ${escapeHTML(error.message)}
+                </small>
+
             </div>
         `;
 
@@ -1333,38 +1271,263 @@ function tampilkanPengaduan() {
 
 
 /* =================================================
-   SIMPAN TANGGAPAN
+   BUAT KARTU PENGADUAN
+================================================= */
+
+function buatKartuPengaduan(
+    item,
+    daftar
+) {
+
+    const card =
+        document.createElement("div");
+
+
+    card.className =
+        "pengaduan-card";
+
+
+    const safeToken =
+        escapeId(item.token);
+
+
+    const tanggapanLama =
+        item.tanggapan &&
+        item.tanggapan !== "-"
+        ? item.tanggapan
+        : "";
+
+
+    card.innerHTML = `
+
+        <h3>
+            📢 Pengaduan Masyarakat
+        </h3>
+
+
+        <p>
+            <strong>Token:</strong>
+            <span class="token">
+                ${escapeHTML(item.token)}
+            </span>
+        </p>
+
+
+        <p>
+            <strong>Nama:</strong>
+            ${escapeHTML(item.nama)}
+        </p>
+
+
+        <p>
+            <strong>NIK:</strong>
+            ${escapeHTML(item.nik)}
+        </p>
+
+
+        <p>
+            <strong>No. HP:</strong>
+            ${escapeHTML(item.nohp)}
+        </p>
+
+
+        <p>
+            <strong>Kategori:</strong>
+            ${escapeHTML(item.kategori)}
+        </p>
+
+
+        <p>
+            <strong>Isi Pengaduan:</strong>
+        </p>
+
+        <p>
+            ${escapeHTML(item.pengaduan)}
+        </p>
+
+
+        <p>
+            <strong>Status Saat Ini:</strong>
+
+            <span class="status-badge">
+                ${escapeHTML(
+                    item.status || "Menunggu"
+                )}
+            </span>
+        </p>
+
+
+        ${
+            tanggapanLama
+            ? `
+                <p>
+                    <strong>Tanggapan Sebelumnya:</strong>
+                </p>
+
+                <p>
+                    ${escapeHTML(tanggapanLama)}
+                </p>
+            `
+            : ""
+        }
+
+
+        <div class="tanggapan-box">
+
+            <h3>
+                💬 Berikan Tanggapan
+            </h3>
+
+
+            <label>
+                Status Pengaduan
+            </label>
+
+
+            <select
+                id="status-${safeToken}"
+            >
+
+                <option
+                    value="Menunggu"
+                    ${
+                        item.status === "Menunggu"
+                        ? "selected"
+                        : ""
+                    }
+                >
+                    Menunggu
+                </option>
+
+
+                <option
+                    value="Diproses"
+                    ${
+                        item.status === "Diproses"
+                        ? "selected"
+                        : ""
+                    }
+                >
+                    Diproses
+                </option>
+
+
+                <option
+                    value="Selesai"
+                    ${
+                        item.status === "Selesai"
+                        ? "selected"
+                        : ""
+                    }
+                >
+                    Selesai
+                </option>
+
+
+                <option
+                    value="Ditolak"
+                    ${
+                        item.status === "Ditolak"
+                        ? "selected"
+                        : ""
+                    }
+                >
+                    Ditolak
+                </option>
+
+            </select>
+
+
+            <label>
+                Tanggapan Admin
+            </label>
+
+
+            <textarea
+                id="tanggapan-${safeToken}"
+                placeholder="Tuliskan tanggapan untuk masyarakat..."
+            >${escapeHTML(tanggapanLama)}</textarea>
+
+
+            <button
+                class="save-btn"
+                onclick="simpanTanggapan('${escapeJS(item.token)}')"
+            >
+                💾 Simpan Tanggapan
+            </button>
+
+
+            <div
+                class="message"
+                id="message-${safeToken}"
+            ></div>
+
+        </div>
+
+    `;
+
+
+    daftar.appendChild(card);
+
+}
+
+
+/* =================================================
+   SIMPAN TANGGAPAN ADMIN
 ================================================= */
 
 function simpanTanggapan(token) {
 
-    const id =
+    const safeToken =
         escapeId(token);
 
 
-    const status =
+    const statusElement =
         document.getElementById(
-            "status-" + id
-        ).value;
+            "status-" + safeToken
+        );
+
+
+    const tanggapanElement =
+        document.getElementById(
+            "tanggapan-" + safeToken
+        );
+
+
+    const messageElement =
+        document.getElementById(
+            "message-" + safeToken
+        );
+
+
+    if (
+        !statusElement ||
+        !tanggapanElement
+    ) {
+
+        alert(
+            "Form tanggapan tidak ditemukan."
+        );
+
+        return;
+
+    }
+
+
+    const status =
+        statusElement.value;
 
 
     const tanggapan =
-        document.getElementById(
-            "tanggapan-" + id
-        ).value.trim();
-
-
-    const message =
-        document.getElementById(
-            "message-" + id
-        );
+        tanggapanElement.value.trim();
 
 
     if (!tanggapan) {
 
-        message.style.color = "red";
+        messageElement.style.color =
+            "red";
 
-        message.innerText =
+        messageElement.innerText =
             "❌ Tanggapan belum diisi.";
 
         return;
@@ -1372,10 +1535,45 @@ function simpanTanggapan(token) {
     }
 
 
-    message.style.color = "#287a45";
+    messageElement.style.color =
+        "#287a45";
 
-    message.innerText =
+    messageElement.innerText =
         "⏳ Menyimpan tanggapan...";
+
+
+    /*
+       Menggunakan URLSearchParams agar
+       POST lebih mudah diterima oleh
+       Google Apps Script.
+    */
+
+    const data =
+        new URLSearchParams();
+
+
+    data.append(
+        "action",
+        "tanggapiPengaduan"
+    );
+
+
+    data.append(
+        "token",
+        token
+    );
+
+
+    data.append(
+        "status",
+        status
+    );
+
+
+    data.append(
+        "tanggapan",
+        tanggapan
+    );
 
 
     fetch(
@@ -1384,26 +1582,20 @@ function simpanTanggapan(token) {
 
             method: "POST",
 
-            body: JSON.stringify({
-
-                action:
-                    "tanggapiPengaduan",
-
-                token:
-                    token,
-
-                status:
-                    status,
-
-                tanggapan:
-                    tanggapan
-
-            })
+            body: data
 
         }
     )
 
     .then(function(response) {
+
+        if (!response.ok) {
+
+            throw new Error(
+                "HTTP " + response.status
+            );
+
+        }
 
         return response.json();
 
@@ -1411,28 +1603,31 @@ function simpanTanggapan(token) {
 
     .then(function(result) {
 
+        console.log(
+            "Hasil simpan:",
+            result
+        );
+
+
         if (result.success) {
 
-            message.style.color =
+            messageElement.style.color =
                 "#287a45";
 
-            message.innerText =
+            messageElement.innerText =
                 "✅ Tanggapan berhasil disimpan.";
-
-            setTimeout(function() {
-
-                tampilkanPengaduan();
-
-            }, 1000);
 
         } else {
 
-            message.style.color =
+            messageElement.style.color =
                 "red";
 
-            message.innerText =
+            messageElement.innerText =
                 "❌ " +
-                result.message;
+                (
+                    result.message ||
+                    "Gagal menyimpan tanggapan."
+                );
 
         }
 
@@ -1440,12 +1635,16 @@ function simpanTanggapan(token) {
 
     .catch(function(error) {
 
-        console.error(error);
+        console.error(
+            "Error tanggapan:",
+            error
+        );
 
-        message.style.color =
+
+        messageElement.style.color =
             "red";
 
-        message.innerText =
+        messageElement.innerText =
             "❌ Gagal terhubung ke server.";
 
     });
@@ -1454,35 +1653,53 @@ function simpanTanggapan(token) {
 
 
 /* =================================================
-   AMANKAN ID
+   ESCAPE ID
 ================================================= */
 
 function escapeId(text) {
 
     return String(text)
-        .replace(/[^a-zA-Z0-9_-]/g, "_");
+        .replace(
+            /[^a-zA-Z0-9_-]/g,
+            "_"
+        );
 
 }
 
 
 /* =================================================
-   AMANKAN JAVASCRIPT
+   ESCAPE JAVASCRIPT
 ================================================= */
 
 function escapeJS(text) {
 
     return String(text)
-        .replace(/\\/g, "\\\\")
-        .replace(/'/g, "\\'")
-        .replace(/"/g, '\\"')
-        .replace(/\n/g, "\\n")
-        .replace(/\r/g, "\\r");
+        .replace(
+            /\\/g,
+            "\\\\"
+        )
+        .replace(
+            /'/g,
+            "\\'"
+        )
+        .replace(
+            /"/g,
+            '\\"'
+        )
+        .replace(
+            /\n/g,
+            "\\n"
+        )
+        .replace(
+            /\r/g,
+            "\\r"
+        );
 
 }
 
 
 /* =================================================
-   AMANKAN HTML
+   ESCAPE HTML
 ================================================= */
 
 function escapeHTML(text) {
@@ -1496,27 +1713,48 @@ function escapeHTML(text) {
 
     }
 
+
     return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
 
 /* =================================================
-   PROFIL
+   SIMPAN PROFIL
 ================================================= */
 
 function simpanProfil() {
 
     const judul =
-        document.getElementById("profilJudul").value.trim();
+        document.getElementById(
+            "profilJudul"
+        ).value.trim();
+
 
     const isi =
-        document.getElementById("profilIsi").value.trim();
+        document.getElementById(
+            "profilIsi"
+        ).value.trim();
 
 
     if (!judul || !isi) {
@@ -1533,7 +1771,9 @@ function simpanProfil() {
     kirimData({
 
         action: "simpanProfil",
+
         judul: judul,
+
         isi: isi
 
     }, "profilMessage");
@@ -1542,19 +1782,27 @@ function simpanProfil() {
 
 
 /* =================================================
-   POTENSI
+   SIMPAN POTENSI
 ================================================= */
 
 function simpanPotensi() {
 
     const nama =
-        document.getElementById("potensiNama").value.trim();
+        document.getElementById(
+            "potensiNama"
+        ).value.trim();
+
 
     const deskripsi =
-        document.getElementById("potensiDeskripsi").value.trim();
+        document.getElementById(
+            "potensiDeskripsi"
+        ).value.trim();
+
 
     const gambar =
-        document.getElementById("potensiGambar").value.trim();
+        document.getElementById(
+            "potensiGambar"
+        ).value.trim();
 
 
     if (!nama || !deskripsi) {
@@ -1571,8 +1819,11 @@ function simpanPotensi() {
     kirimData({
 
         action: "simpanPotensi",
+
         nama: nama,
+
         deskripsi: deskripsi,
+
         gambar: gambar
 
     }, "potensiMessage");
@@ -1581,19 +1832,27 @@ function simpanPotensi() {
 
 
 /* =================================================
-   GALERI
+   SIMPAN GALERI
 ================================================= */
 
 function simpanGaleri() {
 
     const judul =
-        document.getElementById("galeriJudul").value.trim();
+        document.getElementById(
+            "galeriJudul"
+        ).value.trim();
+
 
     const gambar =
-        document.getElementById("galeriGambar").value.trim();
+        document.getElementById(
+            "galeriGambar"
+        ).value.trim();
+
 
     const keterangan =
-        document.getElementById("galeriKeterangan").value.trim();
+        document.getElementById(
+            "galeriKeterangan"
+        ).value.trim();
 
 
     if (!judul || !gambar) {
@@ -1610,8 +1869,11 @@ function simpanGaleri() {
     kirimData({
 
         action: "simpanGaleri",
+
         judul: judul,
+
         gambar: gambar,
+
         keterangan: keterangan
 
     }, "galeriMessage");
@@ -1620,19 +1882,27 @@ function simpanGaleri() {
 
 
 /* =================================================
-   KONTAK
+   SIMPAN KONTAK
 ================================================= */
 
 function simpanKontak() {
 
     const alamat =
-        document.getElementById("kontakAlamat").value.trim();
+        document.getElementById(
+            "kontakAlamat"
+        ).value.trim();
+
 
     const telepon =
-        document.getElementById("kontakTelepon").value.trim();
+        document.getElementById(
+            "kontakTelepon"
+        ).value.trim();
+
 
     const email =
-        document.getElementById("kontakEmail").value.trim();
+        document.getElementById(
+            "kontakEmail"
+        ).value.trim();
 
 
     if (
@@ -1653,8 +1923,11 @@ function simpanKontak() {
     kirimData({
 
         action: "simpanKontak",
+
         alamat: alamat,
+
         telepon: telepon,
+
         email: email
 
     }, "kontakMessage");
@@ -1665,4 +1938,3 @@ function simpanKontak() {
 
 </body>
 </html>
-```
