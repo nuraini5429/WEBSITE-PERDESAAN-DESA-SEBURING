@@ -20,7 +20,9 @@ body {
     background: #f3f7f4;
 }
 
-/* LOGIN */
+/* =========================
+   LOGIN
+========================= */
 
 .login-page {
     min-height: 100vh;
@@ -86,7 +88,9 @@ button {
 }
 
 
-/* DASHBOARD */
+/* =========================
+   DASHBOARD
+========================= */
 
 #dashboard {
     display: none;
@@ -127,6 +131,11 @@ button {
     margin-bottom: 8px;
 }
 
+
+/* =========================
+   MENU
+========================= */
+
 .menu {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -147,6 +156,11 @@ button {
 .menu button:hover {
     background: #e5f4e9;
 }
+
+
+/* =========================
+   FORM
+========================= */
 
 .form-box {
     display: none;
@@ -181,6 +195,55 @@ button {
     margin-top: 15px;
     font-weight: bold;
 }
+
+
+/* =========================
+   PESAN MASUK
+========================= */
+
+.pesan-card {
+    background: #f3f7f4;
+    padding: 18px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border-left: 5px solid #287a45;
+}
+
+.pesan-card strong {
+    color: #287a45;
+}
+
+.pesan-card p {
+    margin-top: 8px;
+    line-height: 1.6;
+}
+
+.pesan-card small {
+    color: #777;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+}
+
+.no-pesan {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+}
+
+.error-pesan {
+    text-align: center;
+    padding: 20px;
+    color: red;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width: 800px) {
 
@@ -217,7 +280,9 @@ button {
 <body>
 
 
-<!-- ================= LOGIN ================= -->
+<!-- =================================================
+     LOGIN
+================================================= -->
 
 <div class="login-page" id="loginPage">
 
@@ -239,7 +304,10 @@ button {
             placeholder="Password"
         >
 
-        <button class="login-btn" onclick="login()">
+        <button
+            class="login-btn"
+            onclick="login()"
+        >
             Login
         </button>
 
@@ -250,7 +318,9 @@ button {
 </div>
 
 
-<!-- ================= DASHBOARD ================= -->
+<!-- =================================================
+     DASHBOARD
+================================================= -->
 
 <div id="dashboard">
 
@@ -258,7 +328,10 @@ button {
 
         <h2>🌿 Admin Desa Seburing Hilir</h2>
 
-        <button class="logout" onclick="logout()">
+        <button
+            class="logout"
+            onclick="logout()"
+        >
             Logout
         </button>
 
@@ -267,6 +340,8 @@ button {
 
     <div class="container">
 
+
+        <!-- WELCOME -->
 
         <div class="welcome">
 
@@ -280,38 +355,95 @@ button {
         </div>
 
 
-        <!-- MENU -->
+        <!-- =================================================
+             MENU
+        ================================================= -->
 
         <div class="menu">
 
             <button onclick="showForm('profil')">
-                🏡<br><br>
+                🏡
+                <br><br>
                 Kelola Profil
             </button>
 
+
             <button onclick="showForm('potensi')">
-                🌱<br><br>
+                🌱
+                <br><br>
                 Kelola Potensi
             </button>
 
+
             <button onclick="showForm('galeri')">
-                📷<br><br>
+                📷
+                <br><br>
                 Kelola Galeri
             </button>
 
+
             <button onclick="showForm('kontak')">
-                📩<br><br>
+                📩
+                <br><br>
                 Kelola Kontak
+            </button>
+
+
+            <button onclick="tampilkanPesan()">
+                💬
+                <br><br>
+                Pesan Masuk
             </button>
 
         </div>
 
 
-        <!-- ================= PROFIL ================= -->
+        <!-- =================================================
+             PESAN MASUK
+        ================================================= -->
 
-        <div class="form-box" id="profil">
+        <div
+            class="form-box"
+            id="pesanMasuk"
+        >
 
-            <h2>🏡 Tambah Profil Desa</h2>
+            <h2>
+                💬 Pesan dari Pengunjung
+            </h2>
+
+
+            <div id="daftarPesan">
+
+                <div class="loading">
+                    ⏳ Memuat pesan...
+                </div>
+
+            </div>
+
+
+            <button
+                class="back-btn"
+                onclick="tutupForm()"
+            >
+                Kembali
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             PROFIL
+        ================================================= -->
+
+        <div
+            class="form-box"
+            id="profil"
+        >
+
+            <h2>
+                🏡 Tambah Profil Desa
+            </h2>
+
 
             <label>Judul</label>
 
@@ -321,12 +453,14 @@ button {
                 placeholder="Contoh: Tentang Desa Seburing Hilir"
             >
 
+
             <label>Isi Profil</label>
 
             <textarea
                 id="profilIsi"
                 placeholder="Masukkan informasi profil desa..."
             ></textarea>
+
 
             <button
                 class="save-btn"
@@ -335,12 +469,14 @@ button {
                 💾 Simpan
             </button>
 
+
             <button
                 class="back-btn"
                 onclick="tutupForm()"
             >
                 Kembali
             </button>
+
 
             <div
                 class="message"
@@ -350,11 +486,19 @@ button {
         </div>
 
 
-        <!-- ================= POTENSI ================= -->
+        <!-- =================================================
+             POTENSI
+        ================================================= -->
 
-        <div class="form-box" id="potensi">
+        <div
+            class="form-box"
+            id="potensi"
+        >
 
-            <h2>🌱 Tambah Potensi Desa</h2>
+            <h2>
+                🌱 Tambah Potensi Desa
+            </h2>
+
 
             <label>Nama Potensi</label>
 
@@ -364,12 +508,14 @@ button {
                 placeholder="Contoh: Koperasi Merah Putih"
             >
 
+
             <label>Deskripsi</label>
 
             <textarea
                 id="potensiDeskripsi"
                 placeholder="Masukkan deskripsi potensi..."
             ></textarea>
+
 
             <label>Link Gambar</label>
 
@@ -379,6 +525,7 @@ button {
                 placeholder="Masukkan nama/link gambar"
             >
 
+
             <button
                 class="save-btn"
                 onclick="simpanPotensi()"
@@ -386,12 +533,14 @@ button {
                 💾 Simpan
             </button>
 
+
             <button
                 class="back-btn"
                 onclick="tutupForm()"
             >
                 Kembali
             </button>
+
 
             <div
                 class="message"
@@ -401,11 +550,19 @@ button {
         </div>
 
 
-        <!-- ================= GALERI ================= -->
+        <!-- =================================================
+             GALERI
+        ================================================= -->
 
-        <div class="form-box" id="galeri">
+        <div
+            class="form-box"
+            id="galeri"
+        >
 
-            <h2>📷 Tambah Galeri</h2>
+            <h2>
+                📷 Tambah Galeri
+            </h2>
+
 
             <label>Judul Foto</label>
 
@@ -415,6 +572,7 @@ button {
                 placeholder="Contoh: Jembatan Gantung"
             >
 
+
             <label>Link Gambar</label>
 
             <input
@@ -423,12 +581,14 @@ button {
                 placeholder="Masukkan link gambar"
             >
 
+
             <label>Keterangan</label>
 
             <textarea
                 id="galeriKeterangan"
                 placeholder="Masukkan keterangan foto..."
             ></textarea>
+
 
             <button
                 class="save-btn"
@@ -437,12 +597,14 @@ button {
                 💾 Simpan
             </button>
 
+
             <button
                 class="back-btn"
                 onclick="tutupForm()"
             >
                 Kembali
             </button>
+
 
             <div
                 class="message"
@@ -452,11 +614,19 @@ button {
         </div>
 
 
-        <!-- ================= KONTAK ================= -->
+        <!-- =================================================
+             KONTAK
+        ================================================= -->
 
-        <div class="form-box" id="kontak">
+        <div
+            class="form-box"
+            id="kontak"
+        >
 
-            <h2>📩 Tambah Kontak</h2>
+            <h2>
+                📩 Tambah Kontak
+            </h2>
+
 
             <label>Alamat</label>
 
@@ -466,6 +636,7 @@ button {
                 placeholder="Alamat Desa Seburing Hilir"
             >
 
+
             <label>Nomor Telepon</label>
 
             <input
@@ -473,6 +644,7 @@ button {
                 id="kontakTelepon"
                 placeholder="Nomor telepon"
             >
+
 
             <label>Email</label>
 
@@ -482,12 +654,14 @@ button {
                 placeholder="Email desa"
             >
 
+
             <button
                 class="save-btn"
                 onclick="simpanKontak()"
             >
                 💾 Simpan
             </button>
+
 
             <button
                 class="back-btn"
@@ -496,12 +670,14 @@ button {
                 Kembali
             </button>
 
+
             <div
                 class="message"
                 id="kontakMessage"
             ></div>
 
         </div>
+
 
     </div>
 
@@ -518,9 +694,9 @@ const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbw24iM51SJMRa5WsAD2oOAr-hMqmjJzWuV2cIhsSspvgeXAt85iUEOg6an2aaxeDvTaVg/exec";
 
 
-/* =========================
+/* =================================================
    LOGIN
-========================= */
+================================================= */
 
 function login() {
 
@@ -553,9 +729,9 @@ function login() {
 }
 
 
-/* =========================
+/* =================================================
    LOGOUT
-========================= */
+================================================= */
 
 function logout() {
 
@@ -565,16 +741,18 @@ function logout() {
     document.getElementById("loginPage")
         .style.display = "flex";
 
-    document.getElementById("username").value = "";
+    document.getElementById("username")
+        .value = "";
 
-    document.getElementById("password").value = "";
+    document.getElementById("password")
+        .value = "";
 
 }
 
 
-/* =========================
-   FORM
-========================= */
+/* =================================================
+   TAMPILKAN FORM
+================================================= */
 
 function showForm(id) {
 
@@ -585,11 +763,16 @@ function showForm(id) {
 
         });
 
+
     document.getElementById(id)
         .style.display = "block";
 
 }
 
+
+/* =================================================
+   TUTUP FORM
+================================================= */
 
 function tutupForm() {
 
@@ -603,59 +786,303 @@ function tutupForm() {
 }
 
 
-/* =========================
+/* =================================================
    KIRIM DATA
-========================= */
+================================================= */
 
 function kirimData(params, messageId) {
 
     const script =
         document.createElement("script");
 
+
     const callback =
         "callback_" + Date.now();
+
 
     window[callback] = function(data) {
 
         document.getElementById(messageId)
             .innerText =
-            data.message || "Data berhasil disimpan.";
+            data.message ||
+            "Data berhasil disimpan.";
+
 
         delete window[callback];
 
-        document.body.removeChild(script);
+
+        if (document.body.contains(script)) {
+
+            document.body.removeChild(script);
+
+        }
 
     };
 
+
     params.callback = callback;
 
+
     const query =
-        new URLSearchParams(params).toString();
+        new URLSearchParams(params)
+            .toString();
+
 
     script.src =
         SCRIPT_URL + "?" + query;
+
 
     document.body.appendChild(script);
 
 }
 
 
-/* =========================
+/* =================================================
+   TAMPILKAN PESAN DARI GOOGLE SHEETS
+================================================= */
+
+function tampilkanPesan() {
+
+    // Sembunyikan semua form
+    document.querySelectorAll(".form-box")
+        .forEach(function(form) {
+
+            form.style.display = "none";
+
+        });
+
+
+    // Tampilkan form pesan
+    document.getElementById("pesanMasuk")
+        .style.display = "block";
+
+
+    // Loading
+    document.getElementById("daftarPesan")
+        .innerHTML = `
+            <div class="loading">
+                ⏳ Memuat pesan...
+            </div>
+        `;
+
+
+    const script =
+        document.createElement("script");
+
+
+    const callback =
+        "pesanCallback_" + Date.now();
+
+
+    window[callback] = function(data) {
+
+        const daftar =
+            document.getElementById("daftarPesan");
+
+
+        // Jika gagal
+        if (
+            !data ||
+            data.status !== "success"
+        ) {
+
+            daftar.innerHTML = `
+                <div class="error-pesan">
+                    ❌ Gagal mengambil pesan.
+                    <br><br>
+                    Pastikan Code.gs sudah di-deploy
+                    sebagai versi terbaru.
+                </div>
+            `;
+
+
+            delete window[callback];
+
+
+            if (document.body.contains(script)) {
+
+                document.body.removeChild(script);
+
+            }
+
+            return;
+
+        }
+
+
+        // Jika belum ada pesan
+        if (
+            !data.data ||
+            data.data.length === 0
+        ) {
+
+            daftar.innerHTML = `
+                <div class="no-pesan">
+                    📭 Belum ada pesan masuk.
+                </div>
+            `;
+
+        }
+
+
+        // Jika ada pesan
+        else {
+
+            daftar.innerHTML = "";
+
+
+            // Pesan terbaru ditampilkan paling atas
+            data.data.reverse()
+                .forEach(function(item) {
+
+                    const kotak =
+                        document.createElement("div");
+
+
+                    kotak.className =
+                        "pesan-card";
+
+
+                    kotak.innerHTML = `
+
+                        <strong>
+                            👤 ${escapeHTML(item.nama)}
+                        </strong>
+
+                        <br><br>
+
+                        📧 ${escapeHTML(item.email)}
+
+                        <br><br>
+
+                        <strong>
+                            💬 Pesan:
+                        </strong>
+
+                        <p>
+                            ${escapeHTML(item.pesan)}
+                        </p>
+
+                        <small>
+                            🕒 ${formatWaktu(item.waktu)}
+                        </small>
+
+                    `;
+
+
+                    daftar.appendChild(kotak);
+
+                });
+
+        }
+
+
+        delete window[callback];
+
+
+        if (document.body.contains(script)) {
+
+            document.body.removeChild(script);
+
+        }
+
+    };
+
+
+    const url =
+        SCRIPT_URL +
+        "?action=getPesan&callback=" +
+        encodeURIComponent(callback);
+
+
+    script.src = url;
+
+
+    document.body.appendChild(script);
+
+}
+
+
+/* =================================================
+   FORMAT WAKTU
+================================================= */
+
+function formatWaktu(waktu) {
+
+    if (!waktu) {
+
+        return "-";
+
+    }
+
+
+    const tanggal =
+        new Date(waktu);
+
+
+    if (isNaN(tanggal.getTime())) {
+
+        return waktu;
+
+    }
+
+
+    return tanggal.toLocaleString("id-ID");
+
+}
+
+
+/* =================================================
+   AMANKAN TEKS
+================================================= */
+
+function escapeHTML(text) {
+
+    if (
+        text === null ||
+        text === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(text)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =================================================
    PROFIL
-========================= */
+================================================= */
 
 function simpanProfil() {
 
     const judul =
-        document.getElementById("profilJudul").value;
+        document.getElementById("profilJudul")
+            .value;
 
     const isi =
-        document.getElementById("profilIsi").value;
+        document.getElementById("profilIsi")
+            .value;
 
 
     if (!judul || !isi) {
 
-        alert("Judul dan isi profil harus diisi!");
+        alert(
+            "Judul dan isi profil harus diisi!"
+        );
 
         return;
 
@@ -675,25 +1102,32 @@ function simpanProfil() {
 }
 
 
-/* =========================
+/* =================================================
    POTENSI
-========================= */
+================================================= */
 
 function simpanPotensi() {
 
     const nama =
-        document.getElementById("potensiNama").value;
+        document.getElementById("potensiNama")
+            .value;
+
 
     const deskripsi =
-        document.getElementById("potensiDeskripsi").value;
+        document.getElementById("potensiDeskripsi")
+            .value;
+
 
     const gambar =
-        document.getElementById("potensiGambar").value;
+        document.getElementById("potensiGambar")
+            .value;
 
 
     if (!nama || !deskripsi) {
 
-        alert("Nama dan deskripsi harus diisi!");
+        alert(
+            "Nama dan deskripsi harus diisi!"
+        );
 
         return;
 
@@ -715,25 +1149,32 @@ function simpanPotensi() {
 }
 
 
-/* =========================
+/* =================================================
    GALERI
-========================= */
+================================================= */
 
 function simpanGaleri() {
 
     const judul =
-        document.getElementById("galeriJudul").value;
+        document.getElementById("galeriJudul")
+            .value;
+
 
     const gambar =
-        document.getElementById("galeriGambar").value;
+        document.getElementById("galeriGambar")
+            .value;
+
 
     const keterangan =
-        document.getElementById("galeriKeterangan").value;
+        document.getElementById("galeriKeterangan")
+            .value;
 
 
     if (!judul || !gambar) {
 
-        alert("Judul dan gambar harus diisi!");
+        alert(
+            "Judul dan gambar harus diisi!"
+        );
 
         return;
 
@@ -755,25 +1196,36 @@ function simpanGaleri() {
 }
 
 
-/* =========================
+/* =================================================
    KONTAK
-========================= */
+================================================= */
 
 function simpanKontak() {
 
     const alamat =
-        document.getElementById("kontakAlamat").value;
+        document.getElementById("kontakAlamat")
+            .value;
+
 
     const telepon =
-        document.getElementById("kontakTelepon").value;
+        document.getElementById("kontakTelepon")
+            .value;
+
 
     const email =
-        document.getElementById("kontakEmail").value;
+        document.getElementById("kontakEmail")
+            .value;
 
 
-    if (!alamat || !telepon || !email) {
+    if (
+        !alamat ||
+        !telepon ||
+        !email
+    ) {
 
-        alert("Semua data kontak harus diisi!");
+        alert(
+            "Semua data kontak harus diisi!"
+        );
 
         return;
 
