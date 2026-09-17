@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -7,6 +8,7 @@
 
 <title>Admin Desa Seburing Hilir</title>
 <link rel="icon" type="image/png" href="./icon.png">
+
 <style>
 
 * {
@@ -19,6 +21,7 @@
 body {
     background: #f3f7f4;
 }
+
 
 /* =========================
    LOGIN
@@ -53,7 +56,8 @@ body {
 }
 
 input,
-textarea {
+textarea,
+select {
     width: 100%;
     padding: 13px;
     margin-top: 8px;
@@ -247,6 +251,56 @@ button {
 
 
 /* =========================
+   PENGADUAN
+========================= */
+
+.pengaduan-card {
+    background: #f3f7f4;
+    padding: 20px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    border-left: 5px solid #287a45;
+}
+
+.pengaduan-card h3 {
+    color: #287a45;
+    margin-bottom: 12px;
+}
+
+.pengaduan-card p {
+    margin: 7px 0;
+    line-height: 1.5;
+}
+
+.tanggapan-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+    border: 1px solid #ddd;
+}
+
+.tanggapan-box h3 {
+    color: #287a45;
+    margin-bottom: 15px;
+}
+
+.token {
+    font-weight: bold;
+    color: #287a45;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #e8f5e9;
+    color: #287a45;
+    font-weight: bold;
+}
+
+
+/* =========================
    RESPONSIVE
 ========================= */
 
@@ -349,6 +403,7 @@ button {
 
     <div class="container">
 
+
         <!-- WELCOME -->
 
         <div class="welcome">
@@ -399,6 +454,12 @@ button {
                 Pesan Masuk
             </button>
 
+            <button onclick="tampilkanPengaduan()">
+                📢
+                <br><br>
+                Pengaduan Masuk
+            </button>
+
         </div>
 
 
@@ -419,6 +480,37 @@ button {
 
                 <div class="loading">
                     ⏳ Memuat pesan...
+                </div>
+
+            </div>
+
+            <button
+                class="back-btn"
+                onclick="tutupForm()"
+            >
+                Kembali
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             PENGADUAN MASUK
+        ================================================= -->
+
+        <div
+            class="form-box"
+            id="pengaduanMasuk"
+        >
+
+            <h2>
+                📢 Pengaduan Masyarakat
+            </h2>
+
+            <div id="daftarPengaduan">
+
+                <div class="loading">
+                    ⏳ Memuat pengaduan...
                 </div>
 
             </div>
@@ -656,8 +748,17 @@ button {
 
 <script>
 
+
 /* =================================================
-   URL GOOGLE APPS SCRIPT
+   URL GOOGLE APPS SCRIPT PENGADUAN
+================================================= */
+
+const PENGADUAN_URL =
+"https://script.google.com/macros/s/AKfycbzCaYPusHUs3keVvWSiMBk_AgQYBLS_ZtwhYfqDNrEX6eSE06m-O5S-K7DCZ0e66QJBXQ/exec";
+
+
+/* =================================================
+   URL GOOGLE APPS SCRIPT LAMA ADMIN
 ================================================= */
 
 const SCRIPT_URL =
@@ -758,7 +859,7 @@ function tutupForm() {
 
 
 /* =================================================
-   KIRIM DATA KE GOOGLE SHEETS
+   KIRIM DATA LAMA
 ================================================= */
 
 function kirimData(params, messageId) {
@@ -836,7 +937,7 @@ function kirimData(params, messageId) {
 
 
 /* =================================================
-   TAMPILKAN PESAN
+   PESAN MASUK
 ================================================= */
 
 function tampilkanPesan() {
@@ -912,13 +1013,8 @@ function tampilkanPesan() {
         }
 
 
-        /*
-         * Buat salinan array agar data asli
-         * tidak diubah oleh reverse()
-         */
         const dataPesan =
             data.data.slice().reverse();
-
 
         daftar.innerHTML = "";
 
@@ -1004,7 +1100,9 @@ function tampilkanPesan() {
         delete window[callback];
 
         if (document.body.contains(script)) {
+
             document.body.removeChild(script);
+
         }
 
     };
@@ -1016,7 +1114,375 @@ function tampilkanPesan() {
 
 
 /* =================================================
-   AMANKAN TEKS
+   PENGADUAN MASUK
+================================================= */
+
+function tampilkanPengaduan() {
+
+    document.querySelectorAll(".form-box")
+        .forEach(function(form) {
+
+            form.style.display = "none";
+
+        });
+
+
+    const box =
+        document.getElementById("pengaduanMasuk");
+
+    box.style.display = "block";
+
+
+    const daftar =
+        document.getElementById("daftarPengaduan");
+
+
+    daftar.innerHTML = `
+        <div class="loading">
+            ⏳ Memuat pengaduan...
+        </div>
+    `;
+
+
+    fetch(
+        PENGADUAN_URL +
+        "?action=semuaPengaduan"
+    )
+
+    .then(function(response) {
+
+        return response.json();
+
+    })
+
+    .then(function(result) {
+
+        if (!result.success) {
+
+            daftar.innerHTML = `
+                <div class="error-pesan">
+                    ❌ ${escapeHTML(result.message)}
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        if (
+            !result.data ||
+            result.data.length === 0
+        ) {
+
+            daftar.innerHTML = `
+                <div class="no-pesan">
+                    📭 Belum ada pengaduan masyarakat.
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        daftar.innerHTML = "";
+
+
+        result.data
+            .slice()
+            .reverse()
+            .forEach(function(item) {
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "pengaduan-card";
+
+
+                card.innerHTML = `
+
+                    <h3>
+                        📢 Pengaduan
+                    </h3>
+
+                    <p>
+                        <strong>Token:</strong>
+                        <span class="token">
+                            ${escapeHTML(item.token)}
+                        </span>
+                    </p>
+
+                    <p>
+                        <strong>Nama:</strong>
+                        ${escapeHTML(item.nama)}
+                    </p>
+
+                    <p>
+                        <strong>NIK:</strong>
+                        ${escapeHTML(item.nik)}
+                    </p>
+
+                    <p>
+                        <strong>No. HP:</strong>
+                        ${escapeHTML(item.nohp)}
+                    </p>
+
+                    <p>
+                        <strong>Kategori:</strong>
+                        ${escapeHTML(item.kategori)}
+                    </p>
+
+                    <p>
+                        <strong>Isi Pengaduan:</strong><br>
+                        ${escapeHTML(item.pengaduan)}
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        <span class="status-badge">
+                            ${escapeHTML(item.status)}
+                        </span>
+                    </p>
+
+                    <p>
+                        <strong>Tanggapan Saat Ini:</strong><br>
+                        ${escapeHTML(item.tanggapan || "-")}
+                    </p>
+
+                    <div class="tanggapan-box">
+
+                        <h3>
+                            💬 Tanggapi Pengaduan
+                        </h3>
+
+                        <label>Status</label>
+
+                        <select
+                            id="status-${escapeId(item.token)}">
+
+                            <option value="Menunggu"
+                                ${item.status === "Menunggu" ? "selected" : ""}>
+                                Menunggu
+                            </option>
+
+                            <option value="Diproses"
+                                ${item.status === "Diproses" ? "selected" : ""}>
+                                Diproses
+                            </option>
+
+                            <option value="Selesai"
+                                ${item.status === "Selesai" ? "selected" : ""}>
+                                Selesai
+                            </option>
+
+                            <option value="Ditolak"
+                                ${item.status === "Ditolak" ? "selected" : ""}>
+                                Ditolak
+                            </option>
+
+                        </select>
+
+
+                        <label>Tanggapan Admin</label>
+
+                        <textarea
+                            id="tanggapan-${escapeId(item.token)}"
+                            placeholder="Tuliskan tanggapan untuk masyarakat..."
+                        >${item.tanggapan === "-" ? "" : escapeHTML(item.tanggapan)}</textarea>
+
+
+                        <button
+                            class="save-btn"
+                            onclick="simpanTanggapan('${escapeJS(item.token)}')">
+
+                            💾 Simpan Tanggapan
+
+                        </button>
+
+                        <div
+                            class="message"
+                            id="message-${escapeId(item.token)}">
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                daftar.appendChild(card);
+
+            });
+
+    })
+
+    .catch(function(error) {
+
+        console.error(error);
+
+        daftar.innerHTML = `
+            <div class="error-pesan">
+                ❌ Gagal terhubung ke server pengaduan.
+            </div>
+        `;
+
+    });
+
+}
+
+
+/* =================================================
+   SIMPAN TANGGAPAN
+================================================= */
+
+function simpanTanggapan(token) {
+
+    const id =
+        escapeId(token);
+
+
+    const status =
+        document.getElementById(
+            "status-" + id
+        ).value;
+
+
+    const tanggapan =
+        document.getElementById(
+            "tanggapan-" + id
+        ).value.trim();
+
+
+    const message =
+        document.getElementById(
+            "message-" + id
+        );
+
+
+    if (!tanggapan) {
+
+        message.style.color = "red";
+
+        message.innerText =
+            "❌ Tanggapan belum diisi.";
+
+        return;
+
+    }
+
+
+    message.style.color = "#287a45";
+
+    message.innerText =
+        "⏳ Menyimpan tanggapan...";
+
+
+    fetch(
+        PENGADUAN_URL,
+        {
+
+            method: "POST",
+
+            body: JSON.stringify({
+
+                action:
+                    "tanggapiPengaduan",
+
+                token:
+                    token,
+
+                status:
+                    status,
+
+                tanggapan:
+                    tanggapan
+
+            })
+
+        }
+    )
+
+    .then(function(response) {
+
+        return response.json();
+
+    })
+
+    .then(function(result) {
+
+        if (result.success) {
+
+            message.style.color =
+                "#287a45";
+
+            message.innerText =
+                "✅ Tanggapan berhasil disimpan.";
+
+            setTimeout(function() {
+
+                tampilkanPengaduan();
+
+            }, 1000);
+
+        } else {
+
+            message.style.color =
+                "red";
+
+            message.innerText =
+                "❌ " +
+                result.message;
+
+        }
+
+    })
+
+    .catch(function(error) {
+
+        console.error(error);
+
+        message.style.color =
+            "red";
+
+        message.innerText =
+            "❌ Gagal terhubung ke server.";
+
+    });
+
+}
+
+
+/* =================================================
+   AMANKAN ID
+================================================= */
+
+function escapeId(text) {
+
+    return String(text)
+        .replace(/[^a-zA-Z0-9_-]/g, "_");
+
+}
+
+
+/* =================================================
+   AMANKAN JAVASCRIPT
+================================================= */
+
+function escapeJS(text) {
+
+    return String(text)
+        .replace(/\\/g, "\\\\")
+        .replace(/'/g, "\\'")
+        .replace(/"/g, '\\"')
+        .replace(/\n/g, "\\n")
+        .replace(/\r/g, "\\r");
+
+}
+
+
+/* =================================================
+   AMANKAN HTML
 ================================================= */
 
 function escapeHTML(text) {
@@ -1199,3 +1665,4 @@ function simpanKontak() {
 
 </body>
 </html>
+```
